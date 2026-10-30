@@ -81,3 +81,7 @@ Relevant Supabase references: [Row Level Security](https://supabase.com/docs/gui
 ## Fonts and accessibility
 
 The site loads Zen Maru Gothic for reading, Mochiy Pop One for headings, and DotGothic16 for compact retro interface labels from Google Fonts. All three are available under the SIL Open Font License. The site includes keyboard-operable navigation/dialogue, touch pointer drawing, reduced-motion handling, and responsive layouts.
+
+### Custom cursor
+
+The desktop pointer uses the full supplied Kagamine Rin cursor set by ko from RW Designer. The original 32×32 animated cursor frames are preserved as PNG frames so they can animate in modern browsers. The theme includes the normal pointer, link, text, resize, and other cursor states. Touch devices keep their system cursor behavior.

@@ -41,6 +41,14 @@
 @keyframes music-loading{to{filter:brightness(1.12);transform:scale(.96)}}
 .shop-awning{color:#642c48;font-size:12px;font-weight:bold;letter-spacing:.07em;text-shadow:0 1px rgba(255,255,255,.96),0 0 5px #fff;background:repeating-linear-gradient(90deg,#ed7fa8 0 30px,#fff4f7 30px 60px)}
 .key-point{padding:0 .12em;color:#493a52;background:linear-gradient(transparent 48%,#fff0ad 48%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
-@media(hover:hover) and (pointer:fine){body{cursor:url('../assets/icons/pawio-cursor.svg') 2 2,auto}button,a,[role="button"],input[type="range"]{cursor:url('../assets/icons/pawio-cursor.svg') 2 2,pointer}}
+
 @media(max-width:680px){.audio-tools{gap:4px;padding:2px}.music-volume{width:55px}.sfx-toggle{width:25px;height:25px}.shop-awning{font-size:11px;letter-spacing:.045em}}
 @media(max-width:370px){.topbar-actions{gap:4px}.quiet-button{padding-inline:4px}.audio-tools{gap:3px}.music-volume{width:42px}.sfx-toggle{width:23px;height:23px}.shop-awning{font-size:10px}}
+
+/* Full animated Kagamine Rin cursor set (32×32, native size). */
+@media (hover: hover) and (pointer: fine) {
+  html.has-rin-cursor, html.has-rin-cursor * { cursor: none !important; }
+  .rin-cursor { position: fixed; top: 0; left: 0; z-index: 2147483647; width: 32px; height: 32px; pointer-events: none; user-select: none; transform: translate3d(-100px, -100px, 0); }
+  .rin-cursor.is-hidden { opacity: 0; }
+}
+@media (hover: hover) and (pointer: fine) { .cursor-credit { color: #9b8191; font: 7px var(--pixel); text-decoration: none; white-space: nowrap; } .cursor-credit:hover, .cursor-credit:focus-visible { color: #c94f86; text-decoration: underline; } }

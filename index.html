@@ -18,7 +18,14 @@
       <button class="brand-chip" type="button" data-view="home" aria-label="Return to home">PAWIO'S WORLD</button>
       <div class="topbar-actions">
         <button id="replay-intro" class="quiet-button" type="button">REPLAY INTRO</button>
-        <button id="music-toggle" class="music-toggle" type="button" aria-label="Music is not configured" aria-pressed="false" disabled><span aria-hidden="true">♪</span></button>
+        <div class="audio-tools" aria-label="Audio controls">
+          <button id="sfx-toggle" class="sfx-toggle" type="button" aria-label="Button sounds on" aria-pressed="true" title="Button sounds on">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9v6h4l5 4V5l-5 4z"/><path class="sound-wave" d="M15 9a4 4 0 0 1 0 6m2.5-8.5a7.5 7.5 0 0 1 0 11"/><path class="sound-mute" d="m15.5 9 5 6m0-6-5 6"/></svg>
+          </button>
+          <label class="visually-hidden" for="music-volume">Music volume</label>
+          <input id="music-volume" class="music-volume" type="range" min="0" max="1" step="0.05" value="0.45" aria-label="Music volume">
+          <button id="music-toggle" class="music-toggle" type="button" aria-label="Turn music on" aria-pressed="false"><span aria-hidden="true">♪</span></button>
+        </div>
       </div>
     </header>
 
@@ -75,14 +82,14 @@
 
       <section id="view-commissions" class="view" aria-labelledby="commissions-title" hidden>
         <header class="section-head section-head--blue"><h1 id="commissions-title">Commissions</h1><span class="status-pill status-pill--large"><i></i> OPEN</span></header>
-        <div class="commission-intro"><p>Commissions are done through VGen or Discord. Commission options and current prices are listed on VGen and Toyhouse. Contact Pawio for custom inquiries.</p></div>
+        <div class="commission-intro"><p>Commissions are done through VGen or Discord. <strong class="key-point">🫶 Current options and prices are listed on VGen and Toyhouse.</strong> Contact Pawio for custom inquiries.</p></div>
         <div class="commission-grid">
           <article class="info-window"><h2 class="window-bar window-bar--rose">Will draw</h2><ul class="plain-list"><li>Fem characters (including boys)</li><li>Different styles</li><li>Game characters (not too cluttered)</li><li>Humanoids / kemonomimi</li><li>Flat-faced furries</li></ul></article>
           <article class="info-window info-window--blue"><h2 class="window-bar window-bar--blue">Won't draw</h2><ul class="plain-list"><li>NSFW / super heavy gore</li><li>Heavily realistic depictions of demons or ghosts</li><li>Full furries</li><li>Religious topics / themes</li><li>Anything Pawio is uncomfortable with</li></ul></article>
           <article class="info-window info-window--wide"><h2 class="window-bar window-bar--butter">Commission notes</h2><div class="order-notes">
             <p><b>Prices</b> have moved to VGen and Toyhouse. Price range depends on character complexity; custom prices also depend on complexity.</p>
             <p>Every commission is paid work. Add-ons (OC, background, object) are charged. Clutter and decoration count toward character design complexity. Every custom gets free art.</p>
-            <p>Commercial use is charged. Off-site custom payments are strictly upfront or after sketch. Only PayPal is connected on VGen.</p>
+            <p>Commercial use is charged. <strong class="key-point">🫶 Off-site custom payments are due upfront or after the sketch.</strong> Only PayPal is connected on VGen.</p>
             <p>Turnaround time is listed in commission details. Updates are sent every phase; Pawio will let clients know if there are delays.</p>
             <p>Payment methods listed on Pawio's card: PayPal, VGen, bank transfer, and local payment apps. Other methods like Nitro, decor, and game top-ups are accepted only when announced.</p>
           </div></article>
@@ -94,7 +101,7 @@
         <header class="section-head section-head--butter"><h1 id="shop-title">Shop</h1></header>
         <div class="shop-scene">
           <div class="shop-awning">PAWIO'S LITTLE SHOP</div>
-          <div class="shop-body"><div class="shop-window-display"><div class="art-placeholder shop-placeholder"><span class="placeholder-label">INSERT SHOP PREVIEW</span></div><div class="display-shelf"></div></div><div class="shop-copy"><span class="coming-stamp">IN PREPARATION</span><h2>Something lovely is on its way.</h2><p>Custom IRL merchandise is still in the works. Preorder announcements are planned for December 2026 or early 2027. There are no confirmed products or purchase links yet.</p><p class="shop-empty-note">The shop will open when an official catalog is available.</p></div></div>
+          <div class="shop-body"><div class="shop-window-display"><div class="art-placeholder shop-placeholder"><span class="placeholder-label">INSERT SHOP PREVIEW</span></div><div class="display-shelf"></div></div><div class="shop-copy"><span class="coming-stamp">IN PREPARATION</span><h2>Something lovely is on its way.</h2><p>Custom IRL merchandise is still in the works. Preorder announcements are planned for December 2026 or early 2027. <strong class="key-point">🫶 No products or purchase links are confirmed yet.</strong></p><p class="shop-empty-note">The shop will open when an official catalog is available.</p></div></div>
         </div>
       </section>
 
@@ -102,7 +109,7 @@
         <header class="section-head section-head--lilac"><h1 id="tos-title">Terms of service</h1></header>
         <p class="tos-lead">Please read Pawio's terms and notes before commissioning.</p>
         <div class="tos-layout"><aside class="manual-index" aria-label="Contents"><a href="#tos-usage">Usage & credit</a><a href="#tos-timing">Timing & updates</a><a href="#tos-refunds">Refunds & requests</a><a href="#tos-payment">Payment notes</a></aside><div class="tos-pages">
-          <article id="tos-usage" class="tos-rule"><span class="rule-number">01</span><div><h2>Usage & credit</h2><ul><li>Do not claim Pawio's work as your own.</li><li>Pawio may post any commissions to their portfolio or socials.</li><li>Credit Pawio as <b>@pawpawio / pawpawio_</b> when using or posting the work.</li><li>Pawio does not consent to their work being used in NFT projects or AI training.</li></ul></div></article>
+          <article id="tos-usage" class="tos-rule"><span class="rule-number">01</span><div><h2>Usage & credit</h2><ul><li>Do not claim Pawio's work as your own.</li><li>Pawio may post any commissions to their portfolio or socials.</li><li>Credit Pawio as <b>@pawpawio / pawpawio_</b> when using or posting the work.</li><li><strong class="key-point">🫶 Pawio does not consent to their work being used in NFT projects or AI training.</strong></li></ul></div></article>
           <article id="tos-timing" class="tos-rule"><span class="rule-number rule-number--blue">02</span><div><h2>Timing & updates</h2><ul><li>Turnaround time is included in the commission details.</li><li>Clients will be informed if there are delays.</li><li>Updates will be sent at every phase.</li></ul></div></article>
           <article id="tos-refunds" class="tos-rule"><span class="rule-number rule-number--butter">03</span><div><h2>Refunds & requests</h2><ul><li>Refunds are only offered if the art is not to ur liking / if I'm in the wrong.</li><li>I can decline any request for any reason.</li></ul></div></article>
           <article id="tos-payment" class="tos-rule"><span class="rule-number rule-number--mint">04</span><div><h2>Payment notes</h2><ul><li>Off-site custom payments are strictly upfront or after the sketch.</li><li>Commercial use is charged.</li><li>Other payment methods like Nitro, decor, and game top-ups are accepted only when announced.</li></ul><p class="tos-source-note">For current commission-specific details and payment options, check the linked VGen listing or contact Pawio before ordering.</p></div></article>
@@ -122,7 +129,7 @@
             </div>
             <div class="machine-bottom"><label for="doodle-name">NAME <input id="doodle-name" type="text" maxlength="24" placeholder="optional nickname" autocomplete="off"></label><div class="doodle-actions"><button id="save-doodle" class="vn-button save-button" type="button">SAVE PNG <span aria-hidden="true">↓</span></button><button id="submit-doodle" class="vn-button submit-button" type="button" disabled>SUBMIT DOODLE</button></div></div>
             <label class="honeypot" aria-hidden="true">Website <input id="doodle-website" type="text" tabindex="-1" autocomplete="off"></label>
-            <p id="submit-status" class="submit-status" role="status">Shared gallery setup is pending. You can still save your PNG.</p>
+            <p id="submit-status" class="submit-status" role="status"><span class="key-point">🫶 Shared gallery setup is pending.</span> You can still save your PNG.</p>
           </div>
           <aside class="doodle-side">
             <div id="gallery-window" class="gallery-window"><h2 class="window-bar window-bar--mint">Approved doodles</h2><div id="gallery-grid" class="gallery-grid"><p class="empty-gallery">The shared gallery will appear here after setup.</p></div></div>
@@ -132,11 +139,11 @@
         </div>
       </section>
 
-      <footer class="screen-footer"><span class="footer-note">Pawio's World</span><span class="music-attribution">Music source: <a href="https://www.scottbuckley.com.au/library/sleep/" target="_blank" rel="noopener">“Sleep” by Scott Buckley · CC BY 4.0</a></span><a href="https://meownii0.neocities.org/" target="_blank" rel="noopener">Created by Meownii</a></footer>
+      <footer class="screen-footer"><span class="footer-note">Pawio's World</span><span class="music-attribution">Music: <a href="https://www.scottbuckley.com.au/library/glow/" target="_blank" rel="noopener">“Glow” by Scott Buckley · CC BY 4.0</a></span><a href="https://meownii0.neocities.org/" target="_blank" rel="noopener">Created by Meownii</a></footer>
     </main>
   </div>
 
-  <audio id="bgm" preload="none" loop></audio>
+  <audio id="bgm" preload="metadata" loop></audio>
   <div id="intro-overlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="Welcome introduction" hidden>
     <div class="intro-scene"><button id="skip-intro" class="skip-intro" type="button">SKIP ▶▶</button><div class="intro-art" aria-hidden="true"><img class="intro-sprite" data-expression="open" src="assets/images/characters/sprite-open.png" alt=""><img class="intro-sprite" data-expression="closed" src="assets/images/characters/sprite-closed.png" alt=""><img class="intro-sprite" data-expression="point" src="assets/images/characters/sprite-point.png" alt=""></div><div class="vn-dialogue" id="dialogue-box" role="button" tabindex="0" aria-label="Advance dialogue"><div class="dialogue-name">PAWIO</div><p id="dialogue-text" aria-live="polite"></p><span class="dialogue-next" id="dialogue-next" aria-hidden="true">▼</span></div></div>
   </div>
@@ -145,6 +152,7 @@
   <script src="js/supabase-config.js"></script>
   <script src="js/dialogue.js"></script>
   <script src="js/music.js"></script>
+  <script src="js/button-sounds.js"></script>
   <script src="js/doodle.js"></script>
   <script src="js/main.js"></script>
 </body>

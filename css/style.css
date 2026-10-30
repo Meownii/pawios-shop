@@ -30,3 +30,17 @@
 .screen-footer .music-attribution a:hover{color:#c34f84;text-decoration:underline;text-underline-offset:3px}
 .social-link--instagram .social-icon{background:linear-gradient(135deg,#8e64a3,#d8608d 58%,#e4a45f)}
 .social-icon svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Focused finishing touches: accessible audio controls, readable shop sign and quiet emphasis. */
+.audio-tools{display:flex;align-items:center;gap:8px;padding:2px 3px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.38);border-radius:20px}
+.sfx-toggle{display:grid;place-items:center;width:27px;height:27px;padding:5px;border:1px solid rgba(255,255,255,.88);border-radius:50%;background:linear-gradient(#fdfefe,#d9edf3);color:#527f94;box-shadow:inset 0 0 0 1px white,0 1px 2px #52758a55;cursor:pointer}
+.sfx-toggle svg{width:15px;height:15px;fill:currentColor;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sfx-toggle .sound-wave{fill:none}.sfx-toggle .sound-mute{display:none;fill:none}.sfx-toggle.is-muted .sound-wave{display:none}.sfx-toggle.is-muted .sound-mute{display:block}
+.music-volume{width:72px;height:18px;margin:0;accent-color:#f5c2d8;cursor:pointer}
+.music-toggle.is-loading{animation:music-loading .75s ease-in-out infinite alternate}
+@keyframes music-loading{to{filter:brightness(1.12);transform:scale(.96)}}
+.shop-awning{color:#642c48;font-size:12px;font-weight:bold;letter-spacing:.07em;text-shadow:0 1px rgba(255,255,255,.96),0 0 5px #fff;background:repeating-linear-gradient(90deg,#ed7fa8 0 30px,#fff4f7 30px 60px)}
+.key-point{padding:0 .12em;color:#493a52;background:linear-gradient(transparent 48%,#fff0ad 48%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+@media(hover:hover) and (pointer:fine){body{cursor:url('../assets/icons/pawio-cursor.svg') 2 2,auto}button,a,[role="button"],input[type="range"]{cursor:url('../assets/icons/pawio-cursor.svg') 2 2,pointer}}
+@media(max-width:680px){.audio-tools{gap:4px;padding:2px}.music-volume{width:55px}.sfx-toggle{width:25px;height:25px}.shop-awning{font-size:11px;letter-spacing:.045em}}
+@media(max-width:370px){.topbar-actions{gap:4px}.quiet-button{padding-inline:4px}.audio-tools{gap:3px}.music-volume{width:42px}.sfx-toggle{width:23px;height:23px}.shop-awning{font-size:10px}}

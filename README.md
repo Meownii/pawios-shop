@@ -36,7 +36,9 @@ The three uploaded portrait sprites had solid black matte pixels and no alpha ch
 
 ### Music
 
-The selected track is **“Sleep” by Scott Buckley**, an ambient piano piece. The player streams the MP3 from the composer’s official site under **CC BY 4.0**, including commercial projects when attributed. Playback starts only after the visitor presses the music button; there is no autoplay. The browser needs an internet connection to stream it. Required attribution is “Sleep” by Scott Buckley — released under CC-BY 4.0. www.scottbuckley.com.au. To self-host instead, download the MP3 from [Scott Buckley's official track page](https://www.scottbuckley.com.au/library/sleep/), save it as `assets/audio/sleep.mp3`, and change `music.src` in `js/content.js` to that path. Update the credit in `index.html` if you choose a different track. License: [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/).
+The selected track is **“Glow” by Scott Buckley**, a relaxed, happy acoustic guitar and piano piece. It is included locally as `assets/audio/glow.mp3` and licensed under **CC BY 4.0**, including commercial projects when attributed. Playback starts only after the visitor presses the music button; there is no autoplay. The volume slider is saved on the visitor's device. Required attribution is “Glow” by Scott Buckley — released under CC-BY 4.0. www.scottbuckley.com.au. Source: [Scott Buckley's official track page](https://www.scottbuckley.com.au/library/glow/). License: [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+The small speaker toggle enables or mutes gentle synthesized UI button sounds. They start only after a visitor presses a control and the preference is saved on that device.
 
 ## Content source and known gaps
 

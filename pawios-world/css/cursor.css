@@ -1,0 +1,47 @@
+/* Kagamine Rin cursor previews hosted by RW Designer; credit link is in the footer. */
+@media (hover: hover) and (pointer: fine) {
+  body,
+  body * {
+    cursor: url("https://www.rw-designer.com/cursor-view/197915.png") 1 1, auto;
+  }
+
+  a,
+  button,
+  summary,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    cursor: url("https://www.rw-designer.com/cursor-view/197913.png") 1 1, pointer;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+
+  #doodle-canvas {
+    cursor: crosshair;
+  }
+
+  .cursor-credit {
+    color: #9b8191;
+    font: 7px var(--pixel);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .cursor-credit:hover,
+  .cursor-credit:focus-visible {
+    color: #c94f86;
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 640px) {
+  .cursor-credit {
+    display: none;
+  }
+}

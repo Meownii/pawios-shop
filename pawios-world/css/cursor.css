@@ -1,3 +1,28 @@
+/* Small, browser-native versions of the supplied Rin Kagamine cursor set. */
+@media (hover: hover) and (pointer: fine) {
+  body,
+  body * {
+    cursor: url("../assets/cursors/rin-kagamine/normal.png") 0 0, auto;
+  }
+
+  a,
+  button,
+  summary,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    cursor: url("../assets/cursors/rin-kagamine/link.png") 0 0, pointer;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+}
+
 @media (min-width: 641px) {
   .cursor-credit {
     color: #9b8191;
@@ -15,36 +40,4 @@
 
 @media (max-width: 640px) {
   .cursor-credit { display: none; }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  html,
-  body,
-  body * {
-    cursor: none !important;
-  }
-
-  .rin-cursor {
-    position: fixed;
-    z-index: 99999;
-    top: 0;
-    left: 0;
-    width: 32px;
-    height: 32px;
-    pointer-events: none;
-    image-rendering: pixelated;
-    transform: translate3d(-100px, -100px, 0);
-    will-change: transform;
-  }
-
-  .rin-cursor.is-hidden {
-    visibility: hidden;
-  }
-
-  body input[type="text"],
-  body input[type="email"],
-  body textarea,
-  body [contenteditable="true"] {
-    cursor: text !important;
-  }
 }

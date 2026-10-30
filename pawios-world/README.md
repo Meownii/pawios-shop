@@ -53,7 +53,7 @@ The site loads **Cherry Bomb One**, **M PLUS Rounded 1c**, and **DotGothic16** f
 
 ## Custom desktop cursor
 
-The desktop pointer and link cursor use the PNG previews from the [Kagamine Rin cursor set by ko on RW Designer](https://www.rw-designer.com/cursor-set/rin-kagamine). The source set is animated `.ani`, which modern browsers do not use as animated page cursors, so the site references the set's hosted static previews instead of copying or republishing the original files. The small source credit appears in the desktop footer. Touch devices keep their normal system behavior.
+The desktop pointer and link cursor use animated frames from the [Kagamine Rin cursor set by ko on RW Designer](https://www.rw-designer.com/cursor-set/rin-kagamine). Browsers do not play Windows `.ani` cursor files as page cursors, so the site displays the extracted frames in a small custom desktop cursor. Touch devices keep their normal system behavior, and reduced-motion settings show a still cursor. The source credit appears in the desktop footer.
 
 ## Accessibility and responsive layout
 

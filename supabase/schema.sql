@@ -17,6 +17,7 @@ drop policy if exists "admins can read all doodles" on public.doodles;
 drop policy if exists "admins can update doodles" on public.doodles;
 drop policy if exists "admins can delete doodles" on public.doodles;
 drop policy if exists "public doodles are visible" on public.doodles;
+drop policy if exists "approved doodle images are visible" on storage.objects;
 drop index if exists public.doodles_public_gallery_idx;
 drop index if exists public.doodles_moderation_idx;
 alter table public.doodles drop column if exists status;

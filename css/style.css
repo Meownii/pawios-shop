@@ -52,29 +52,35 @@
 @media (hover: hover) and (pointer: fine) { .cursor-credit { color: #9b8191; font: 7px var(--pixel); text-decoration: none; white-space: nowrap; } .cursor-credit:hover, .cursor-credit:focus-visible { color: #c94f86; text-decoration: underline; } }
 
 
-/* Rounder fonts with Pawio's supplied heart frame */
-:root{--body:'M PLUS Rounded 1c',sans-serif;--display:'Mochiy Pop One',sans-serif;--pixel:'Jua',sans-serif}
+/* Heart photo fitted to the opening in Pawio's frame. */
+:root{--body:'Jua',sans-serif;--display:'Mochiy Pop One',sans-serif;--pixel:'Jua',sans-serif}
 .profile-portrait{position:relative;width:100%;max-width:290px;aspect-ratio:1;height:auto;overflow:visible;border:0;outline:0;background:none;box-shadow:none;filter:drop-shadow(0 5px 5px rgba(112,68,95,.18))}
-.profile-portrait .profile-face{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;object-fit:cover;object-position:center 42%;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 88 C42 81 23 65 16 51 C7 34 15 16 30 15 C40 15 47 22 50 31 C54 22 61 15 71 15 C86 16 94 34 84 51 C77 65 58 81 50 88 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 88 C42 81 23 65 16 51 C7 34 15 16 30 15 C40 15 47 22 50 31 C54 22 61 15 71 15 C86 16 94 34 84 51 C77 65 58 81 50 88 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.profile-portrait .profile-face{position:absolute;inset:15%;z-index:1;display:block;width:70%;height:70%;object-fit:cover;object-position:center 45%;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 88 C42 81 23 65 16 51 C7 34 15 16 30 15 C40 15 47 22 50 31 C54 22 61 15 71 15 C86 16 94 34 84 51 C77 65 58 81 50 88 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 88 C42 81 23 65 16 51 C7 34 15 16 30 15 C40 15 47 22 50 31 C54 22 61 15 71 15 C86 16 94 34 84 51 C77 65 58 81 50 88 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 .profile-portrait .heart-frame{position:absolute;z-index:2;inset:0;display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;border:0;background:none;box-shadow:none;filter:none;-webkit-mask:none;mask:none}
 .social-link{border-radius:18px}
 .social-icon{width:48px;height:48px;flex:0 0 48px;border-radius:50%;overflow:hidden;background:#fff;border:2px solid #fff;box-shadow:0 0 0 1px #e9ccda}
 .social-icon img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
-.shop-awning{position:relative;min-height:72px;height:auto;display:flex;align-items:center;justify-content:center;padding:10px 136px 10px 16px;color:#70465f;font:14px/1.25 var(--display);font-weight:400;letter-spacing:.01em;text-shadow:0 1px #fff;border-bottom:3px solid #d8bd72}
+.shop-awning{position:relative;min-height:72px;height:auto;display:flex;align-items:center;justify-content:center;padding:10px 16px;color:#70465f;font:14px/1.25 var(--display);font-weight:400;letter-spacing:.01em;text-align:center;text-shadow:0 1px #fff;border-bottom:3px solid #d8bd72}
 .shop-awning span{position:relative;z-index:1}
-.shop-awning .shop-art-sticker{position:absolute;z-index:2;right:14px;top:50%;width:104px;height:136px;transform:translateY(-50%);object-fit:contain;object-position:center;background:transparent;border:0;border-radius:0;outline:0;box-shadow:none;filter:drop-shadow(0 4px 3px rgba(86,58,76,.22))}
+.shop-window-display{overflow:hidden}
+.shop-placeholder .placeholder-label{display:none}
+.shop-art-character{position:absolute;z-index:2;right:6%;bottom:31px;width:auto;height:210px;max-width:43%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 3px 2px rgba(86,58,76,.16));pointer-events:none}
+.display-shelf{z-index:3}
 .social-link b{font-family:var(--display);font-size:14px}
 .social-link small{font-size:11px;line-height:1.35}
-.shop-copy h2{font-family:var(--display);font-weight:400}
+.section-head h1{font-family:var(--display);font-size:32px;line-height:1.2}
+.shop-copy h2{font-family:var(--display);font-size:22px;line-height:1.38;font-weight:400}
 @media(max-width:680px){
  .profile-portrait{width:min(100%,290px);height:auto;aspect-ratio:1}
- .shop-awning{min-height:66px;justify-content:flex-start;padding:8px 88px 8px 12px;font-size:12px;letter-spacing:0}
- .shop-awning .shop-art-sticker{right:7px;width:70px;height:100px}
- .shop-body{padding-top:39px}
+ .shop-awning{min-height:66px;justify-content:center;padding:8px 12px;font-size:14px;letter-spacing:0}
+ .shop-art-character{right:5%;height:126px;max-width:42%;bottom:29px}
+ .shop-body{padding-top:13px}
+ .section-head h1{font-size:27px}
+ .shop-copy h2{font-size:21px}
  .social-links{grid-template-columns:1fr}
  .social-icon{width:46px;height:46px;flex-basis:46px}
 }
 @media(max-width:390px){
- .shop-awning{font-size:10px;padding-left:9px;padding-right:76px}
- .shop-awning .shop-art-sticker{width:62px;height:92px}
+ .shop-awning{font-size:13px;padding-inline:8px}
+ .shop-art-character{height:116px}
 }

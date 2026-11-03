@@ -18,6 +18,8 @@ drop policy if exists "admins can update doodles" on public.doodles;
 drop policy if exists "admins can delete doodles" on public.doodles;
 drop policy if exists "public doodles are visible" on public.doodles;
 drop policy if exists "approved doodle images are visible" on storage.objects;
+drop policy if exists "admins can delete doodle images" on storage.objects;
+drop policy if exists "public doodle gallery images are visible" on storage.objects;
 drop index if exists public.doodles_public_gallery_idx;
 drop index if exists public.doodles_moderation_idx;
 alter table public.doodles drop column if exists status;
@@ -39,9 +41,6 @@ values ('doodle-submissions', 'doodle-submissions', true, 524288, array['image/p
 on conflict (id) do update
 set public = true, file_size_limit = 524288, allowed_mime_types = array['image/png'];
 
-drop policy if exists "approved doodle images are visible" on storage.objects;
-drop policy if exists "admins can delete doodle images" on storage.objects;
-drop policy if exists "public doodle gallery images are visible" on storage.objects;
 create policy "public doodle gallery images are visible" on storage.objects
   for select to anon, authenticated using (bucket_id = 'doodle-submissions');
 

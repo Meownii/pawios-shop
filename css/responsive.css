@@ -135,3 +135,15 @@
   .shop-awning img { right: 7px; width: 74px; height: 74px; }
   .social-icon { width: 44px; height: 44px; flex-basis: 44px; }
 }
+
+@media (max-width: 680px) {
+  .profile-portrait { width: min(100%, 290px); height: auto; aspect-ratio: 1; }
+  .shop-awning { min-height: 66px; }
+  .shop-awning .shop-art-sticker { right: 7px; width: 70px; height: 100px; }
+  .shop-body { padding-top: 39px; }
+  .social-icon { width: 46px; height: 46px; flex-basis: 46px; }
+}
+@media (max-width: 390px) {
+  .shop-awning { padding-right: 76px; font-size: 10px; }
+  .shop-awning .shop-art-sticker { width: 62px; height: 92px; }
+}

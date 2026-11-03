@@ -195,7 +195,7 @@
 /* Keep the portrait and font roles consistent after all mobile overrides. */
 @media(max-width:680px){
   .profile-portrait .profile-face{top:21%!important;left:30%!important;right:auto!important;bottom:auto!important;width:40%!important;height:55%!important;object-fit:fill!important;object-position:center 50%!important}
-  .section-head h1,.shop-copy h2,.info-window h2,.tos-rule h2,.commission-intro h2{font-family:'Jua',sans-serif!important;font-weight:400!important}
+  .section-head h1,.shop-copy h2,.info-window h2,.tos-rule h2,.commission-intro h2{font-family:'Hachi Maru Pop',sans-serif!important;font-weight:400!important}
   .dialogue-card p,.profile-facts dd,.shop-copy p,.plain-list,.order-notes p,.tos-rule ul,.commission-intro p,.social-link small{font-family:'M PLUS Rounded 1c',sans-serif!important;font-weight:400!important}
   .section-nav .nav-tab,.home-return,.action-button,.tool-button,.save-button,.submit-button,.shop-awning,.social-link b{font-family:'M PLUS Rounded 1c',sans-serif!important;font-weight:500!important}
   .window-bar,.social-window>.window-bar,.coming-stamp,.brand-chip,.quiet-button{font-family:'DotGothic16',sans-serif!important;font-weight:400!important}

@@ -134,3 +134,14 @@
  .shop-awning{font-size:13px;padding-inline:8px}
  .shop-art-character{height:116px}
 }
+
+/* Typography system: soft display headings, readable rounded copy, tiny pixel labels. */
+:root{--body:'M PLUS Rounded 1c',sans-serif;--display:'Jua',sans-serif;--pixel:'DotGothic16',sans-serif;--script:'Dancing Script',cursive}
+body,button,input,select,textarea{font-family:var(--body)}
+.section-head h1,.shop-copy h2,.info-window h2,.tos-rule h2,.commission-intro h2{font-family:var(--display);font-weight:400;letter-spacing:.005em}
+.dialogue-card p,.profile-facts dd,.shop-copy p,.plain-list,.order-notes p,.tos-rule ul,.commission-intro p,.social-link small{font-family:var(--body);font-weight:400}
+.section-nav .nav-tab,.home-return,.action-button,.tool-button,.save-button,.submit-button,.shop-awning,.social-link b{font-family:var(--body);font-weight:500;letter-spacing:.01em}
+.window-bar,.social-window>.window-bar,.coming-stamp,.brand-chip,.quiet-button{font-family:var(--pixel);font-weight:400;letter-spacing:.035em}
+.name-plate{font-family:var(--script);font-weight:500;letter-spacing:.035em}
+.shop-speech{font-family:var(--body);font-weight:400;letter-spacing:0}
+strong,.key-point{font-weight:500}

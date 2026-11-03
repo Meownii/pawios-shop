@@ -100,7 +100,23 @@
       setStatus('Your doodle is on the wall! Thanks for sharing.');
       $('doodle-name').value = ''; $('doodle-website').value = '';
       await loadGallery();
-    } catch (error) { setStatus(error.message === 'Failed to fetch' ? 'The shared gallery is unavailable right now. Your drawing is still here; you can save its PNG.' : error.message === 'Drawing is too large. You can save the PNG instead.' ? error.message : 'The drawing could not be submitted. Please try again or save the PNG.', true); }
+    } catch (error) {
+      const message = error?.message || '';
+      const visibleMessage = message === 'Failed to fetch'
+        ? 'The doodle service could not be reached. Check that the Edge Function is deployed and its URL is correct.'
+        : message === 'Submission service is not configured'
+          ? 'The database setup is incomplete. Run the latest supabase/schema.sql in Supabase SQL Editor.'
+          : message === 'Drawing could not be saved'
+            ? 'The server could not save this drawing. Check the Supabase storage bucket and database setup.'
+            : message === 'Origin not allowed'
+              ? 'This website address is not allowed by the doodle service.'
+              : message === 'Please wait before sending another doodle'
+                ? 'Please wait a few minutes before sending another doodle.'
+                : message === 'Drawing is too large. You can save the PNG instead.'
+                  ? message
+                  : 'The drawing could not be submitted. Please try again or save the PNG.';
+      setStatus(visibleMessage, true);
+    }
     finally { submit.disabled = false; }
   }
 

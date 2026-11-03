@@ -175,3 +175,16 @@
 @media (max-width: 390px) {
   .shop-art-character { height: 190px; }
 }
+
+/* Give each type of text its own playful voice on small screens. */
+@media (max-width: 680px) {
+  .section-head h1 { font-family: 'Mochiy Pop One', sans-serif; }
+  .shop-copy h2, .info-window h2, .tos-rule h2 { font-family: 'Cherry Bomb One', sans-serif; }
+  .dialogue-card p { font-family: 'Yusei Magic', sans-serif; font-size: 14px; }
+  .shop-copy p, .profile-facts dd, .plain-list, .order-notes p, .tos-rule ul, .commission-intro p { font-family: 'M PLUS Rounded 1c', sans-serif; }
+  .shop-awning { font-family: 'Mochiy Pop One', sans-serif; font-size: 12px; }
+  .window-bar { font-family: 'Jua', sans-serif; }
+  .name-plate { font-family: 'Dancing Script', cursive; font-size: 15px; }
+  .profile-portrait .profile-face { top: 7%; left: 7%; right: auto; bottom: auto; width: 86%; height: 86%; }
+  .shop-speech { top: 13%; right: 31%; max-width: 58%; padding: 6px 9px; font-size: 10px; }
+}

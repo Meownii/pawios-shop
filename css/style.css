@@ -104,7 +104,7 @@
 }
 @media(max-width:390px){.shop-art-character{height:190px}}
 .profile-window{position:absolute;inset:0;z-index:1;overflow:hidden;background:#ffda96;-webkit-mask-image:url("../assets/images/decoration/pawio-heart-opening.svg");-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-image:url("../assets/images/decoration/pawio-heart-opening.svg");mask-size:100% 100%;mask-repeat:no-repeat}
-.profile-portrait .profile-face{inset:21%;width:58%;height:58%;object-fit:cover;object-position:center 50%;-webkit-mask:none;mask:none}
+.profile-portrait .profile-face{top:18%;left:25%;right:auto;bottom:auto;width:50%;height:64%;object-fit:fill;object-position:center 50%;-webkit-mask:none;mask:none}
 .section-head h1{font-family:'Cherry Bomb One',sans-serif;font-weight:400;letter-spacing:0}
 .shop-copy h2,.info-window h2,.tos-rule h2{font-family:'Mochiy Pop One',sans-serif;font-weight:400}
 .dialogue-card p{font-family:'Yusei Magic',sans-serif;font-size:15px;line-height:1.65}
@@ -115,9 +115,9 @@
 .window-bar,.social-window>.window-bar{font-family:'DotGothic16',sans-serif;font-size:13px;letter-spacing:.04em}
 .name-plate{font-family:'Dancing Script',cursive;font-size:16px;letter-spacing:.04em}
 .shop-speech{position:absolute;z-index:4;top:13%;right:29%;max-width:58%;width:max-content;padding:6px 10px;border:2px solid #dd91b2;border-radius:24px 24px 24px 12px;background:#fffafe;color:#76536f;box-shadow:0 3px 0 #f2dce7,0 4px 9px rgba(87,60,82,.12);font:12px/1.35 'Hachi Maru Pop',sans-serif;text-align:center;white-space:nowrap}
-.shop-speech:before,.shop-speech:after{content:"";position:absolute;right:18px;bottom:-10px;width:14px;height:13px;clip-path:polygon(0 0,100% 0,8% 100%)}
+.shop-speech:before,.shop-speech:after{content:"";position:absolute;right:10px;bottom:-10px;width:14px;height:13px;clip-path:polygon(0 0,100% 0,100% 100%)}
 .shop-speech:before{background:#dd91b2;bottom:-12px}
-.shop-speech:after{background:#fffafe;width:10px;height:9px;right:20px;bottom:-8px}
+.shop-speech:after{background:#fffafe;width:10px;height:9px;right:12px;bottom:-8px;clip-path:polygon(0 0,100% 0,100% 100%)}
 .section-toolbar,.section-nav,.section-head,.dialogue-card,.profile-facts,.social-window,.social-link,.info-window,.shop-scene,.shop-window-display,.shop-placeholder,.shop-copy,.shop-empty-note,.commission-intro,.manual-index,.tos-rule,.doodle-machine,.canvas-wrap,.doodle-toolbar,.gallery-window,.gallery-card,.intro-scene,.vn-dialogue,.vn-button,.nav-tab,.home-return,.action-button,.tool-button,.submit-button,.save-button{border-radius:20px}
 .shop-awning{border-radius:18px 18px 0 0}
 @media(max-width:680px){

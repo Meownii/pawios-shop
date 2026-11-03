@@ -147,3 +147,17 @@
   .shop-awning { padding-right: 76px; font-size: 10px; }
   .shop-awning .shop-art-sticker { width: 62px; height: 92px; }
 }
+
+/* Final mobile sizing for the supplied heart portrait and shop-window art. */
+@media (max-width: 680px) {
+  .section-head h1 { font-family: 'Mochiy Pop One', sans-serif; font-size: 27px; line-height: 1.2; }
+  .profile-portrait { width: min(100%, 290px); height: auto; aspect-ratio: 1; }
+  .shop-awning { justify-content: center; padding-inline: 10px; font-family: 'Mochiy Pop One', sans-serif; font-size: 14px; text-align: center; }
+  .shop-art-character { right: 5%; bottom: 29px; height: 126px; max-width: 42%; }
+  .shop-body { padding-top: 13px; }
+  .shop-copy h2 { font-family: 'Mochiy Pop One', sans-serif; font-size: 21px; line-height: 1.38; }
+}
+@media (max-width: 390px) {
+  .shop-awning { padding-inline: 8px; font-size: 13px; }
+  .shop-art-character { height: 116px; }
+}

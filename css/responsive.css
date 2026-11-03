@@ -23,7 +23,6 @@
   .nav-tab { min-width: 0; min-height: 32px; padding: 4px 2px; font-size: clamp(6px, 1.7vw, 8px); letter-spacing: 0; white-space: nowrap; }
   .home-layout { display: flex; flex-direction: column; gap: 12px; min-height: 0; padding: 4px 1px 12px; }
   .character-stage { width: 100%; min-height: 0; height: clamp(145px, 42vw, 220px); transform: none; }
-  .profile-portrait { width: min(100%, 240px); height: 240px; }
   .placeholder-label { padding: 6px 9px; font-size: 8px; }
   .home-menu-column { width: 100%; gap: 9px; padding: 0 2px; }
   .logo-reservation { width: min(78%, 380px); min-height: 48px; padding: 8px; font-size: 9px; }
@@ -38,7 +37,7 @@
   .section-head h1 { font-size: clamp(19px, 6vw, 24px); }
   .profile-layout, .doodle-layout { display: flex; flex-direction: column; gap: 12px; padding: 0 1px 8px; }
   .profile-left { display: flex; justify-content: center; }
-  .profile-portrait { width: min(100%, 280px); height: 160px; }
+  .profile-portrait { width: min(100%, 240px); height: 240px; aspect-ratio: 1; }
   .profile-main { gap: 10px; }
   .dialogue-card { padding: 18px 13px 12px; }
   .dialogue-card p { font-size: 13px; line-height: 1.65; }

@@ -102,6 +102,8 @@
  .shop-art-character{right:7%;bottom:29px;height:205px;max-width:58%}
 }
 @media(max-width:390px){.shop-art-character{height:190px}}
+.profile-window{position:absolute;inset:0;z-index:1;overflow:hidden;-webkit-mask-image:url("../assets/images/decoration/pawio-heart-opening.svg");-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-image:url("../assets/images/decoration/pawio-heart-opening.svg");mask-size:100% 100%;mask-repeat:no-repeat}
+.profile-portrait .profile-face{inset:15%;width:70%;height:70%;object-position:center 50%;-webkit-mask:none;mask:none}
 @media(max-width:680px){
  .profile-portrait{width:min(100%,290px);height:auto;aspect-ratio:1}
  .shop-awning{min-height:66px;justify-content:center;padding:8px 12px;font-size:14px;letter-spacing:0}

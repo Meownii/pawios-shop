@@ -51,7 +51,7 @@
     const iconImage = document.createElement('img');
     iconImage.src = "assets/images/social/" + ['social-1.webp','social-2.webp','social-3.webp','social-4.webp'][i];
     iconImage.alt = '';
-    iconImage.loading = 'lazy';
+    iconImage.loading = 'eager';
     icon.append(iconImage);
     const copy = document.createElement('span'); const label = document.createElement('b'); label.textContent = item.label; const note = document.createElement('small'); note.textContent = item.note; copy.append(label, note);
     const out = document.createElement('span'); out.className = 'social-out'; out.textContent = '↗'; a.append(icon, copy, out); social.append(a);

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8e9f0">
+  <meta name="description" content="Pawio's personal corner of the internet: commissions, art, and a tiny doodle room.">
+  <title>Pawio's World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=rin-full">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="desktop-shell">
+    <header class="topbar">
+      <button class="brand-chip" type="button" data-view="home" aria-label="Return to home">PAWIO'S WORLD</button>
+      <div class="topbar-actions">
+        <button id="replay-intro" class="quiet-button" type="button">REPLAY INTRO</button>
+        <div class="audio-tools" aria-label="Audio controls">
+          <button id="sfx-toggle" class="sfx-toggle" type="button" aria-label="Button sounds on" aria-pressed="true" title="Button sounds on">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9v6h4l5 4V5l-5 4z"/><path class="sound-wave" d="M15 9a4 4 0 0 1 0 6m2.5-8.5a7.5 7.5 0 0 1 0 11"/><path class="sound-mute" d="m15.5 9 5 6m0-6-5 6"/></svg>
+          </button>
+          <label class="visually-hidden" for="music-volume">Music volume</label>
+          <input id="music-volume" class="music-volume" type="range" min="0" max="1" step="0.05" value="0.45" aria-label="Music volume">
+          <button id="music-toggle" class="music-toggle" type="button" aria-label="Turn music on" aria-pressed="false"><span aria-hidden="true">♪</span></button>
+        </div>
+      </div>
+    </header>
+
+    <main class="screen-frame">
+      <div class="frame-ornament frame-ornament--tl" aria-hidden="true"></div>
+      <div class="frame-ornament frame-ornament--tr" aria-hidden="true"></div>
+
+      <div id="section-toolbar" class="section-toolbar" hidden>
+        <button class="home-return" type="button" data-view="home"><span aria-hidden="true">←</span> HOME</button>
+        <nav class="section-nav" aria-label="Website sections">
+          <button class="nav-tab" type="button" data-view="about" aria-label="About Me">ABOUT</button>
+          <button class="nav-tab" type="button" data-view="commissions" aria-label="Commissions">COMMS</button>
+          <button class="nav-tab" type="button" data-view="shop" aria-label="Shop">SHOP</button>
+          <button class="nav-tab" type="button" data-view="tos" aria-label="Terms of Service">TOS</button>
+          <button class="nav-tab" type="button" data-view="doodle" aria-label="Doodle Room">DOODLE</button>
+        </nav>
+      </div>
+
+      <section id="view-home" class="view is-active" aria-labelledby="home-title">
+        <h1 id="home-title" class="visually-hidden">Pawio's World</h1>
+        <div class="home-layout">
+          <figure class="character-stage home-characters"><img src="assets/images/characters/doki-chibi-group.png" alt="A chibi group illustration of the four Literature Club girls"></figure>
+          <div class="home-menu-column">
+            <div class="logo-reservation"><img class="home-logo" src="assets/images/logo/pawios-shop.png" alt="Pawio's shop!"></div>
+            <nav class="main-menu" aria-label="Main menu">
+              <button class="vn-button menu-button menu-button--rose" type="button" data-view="about"><span class="menu-number">01</span><span class="menu-button-text">ABOUT ME</span><span class="menu-arrow" aria-hidden="true">›</span></button>
+              <button class="vn-button menu-button menu-button--blue" type="button" data-view="commissions"><span class="menu-number">02</span><span class="menu-button-text">COMMISSIONS</span><span class="menu-arrow" aria-hidden="true">›</span></button>
+              <button class="vn-button menu-button menu-button--butter" type="button" data-view="shop"><span class="menu-number">03</span><span class="menu-button-text">SHOP</span><span class="menu-arrow" aria-hidden="true">›</span></button>
+              <button class="vn-button menu-button menu-button--lilac" type="button" data-view="tos"><span class="menu-number">04</span><span class="menu-button-text">TOS</span><span class="menu-arrow" aria-hidden="true">›</span></button>
+              <button class="vn-button menu-button menu-button--mint" type="button" data-view="doodle"><span class="menu-number">05</span><span class="menu-button-text">DOODLE ROOM</span><span class="menu-arrow" aria-hidden="true">›</span></button>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-about" class="view" aria-labelledby="about-title" hidden>
+        <header class="section-head section-head--rose"><h1 id="about-title">About me</h1></header>
+        <div class="profile-layout">
+          <div class="profile-left">
+            <div class="art-placeholder profile-portrait" aria-label="Reserved space for Pawio's avatar"><span class="placeholder-label">INSERT IMAGE</span></div>
+          </div>
+          <div class="profile-main">
+            <div class="dialogue-card profile-intro"><div class="name-plate">PAWIO</div><p>Hello! Iam pawio .any/they, comms open! rin oshikatsu!<br>Thank you for clicking this card,have a good day/night !!</p></div>
+            <dl class="profile-facts window-panel">
+              <div><dt>NAME</dt><dd>Pawio</dd></div>
+              <div><dt>PRONOUNS</dt><dd>Any / they</dd></div>
+              <div><dt>INTEREST</dt><dd>Rin oshikatsu</dd></div>
+              <div><dt>STATUS</dt><dd><span class="status-pill"><i></i> Commissions open</span></dd></div>
+            </dl>
+            <div class="social-window"><h2 class="window-bar window-bar--lilac">Find Pawio</h2><div id="social-links" class="social-links"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-commissions" class="view" aria-labelledby="commissions-title" hidden>
+        <header class="section-head section-head--blue"><h1 id="commissions-title">Commissions</h1><span class="status-pill status-pill--large"><i></i> OPEN</span></header>
+        <div class="commission-intro"><p>Commissions are done through VGen or Discord. <strong class="key-point">🫶 Current options and prices are listed on VGen and Toyhouse.</strong> Contact Pawio for custom inquiries.</p></div>
+        <div class="commission-grid">
+          <article class="info-window"><h2 class="window-bar window-bar--rose">Will draw</h2><ul class="plain-list"><li>Fem characters (including boys)</li><li>Different styles</li><li>Game characters (not too cluttered)</li><li>Humanoids / kemonomimi</li><li>Flat-faced furries</li></ul></article>
+          <article class="info-window info-window--blue"><h2 class="window-bar window-bar--blue">Won't draw</h2><ul class="plain-list"><li>NSFW / super heavy gore</li><li>Heavily realistic depictions of demons or ghosts</li><li>Full furries</li><li>Religious topics / themes</li><li>Anything Pawio is uncomfortable with</li></ul></article>
+          <article class="info-window info-window--wide"><h2 class="window-bar window-bar--butter">Commission notes</h2><div class="order-notes">
+            <p><b>Prices</b> have moved to VGen and Toyhouse. Price range depends on character complexity; custom prices also depend on complexity.</p>
+            <p>Every commission is paid work. Add-ons (OC, background, object) are charged. Clutter and decoration count toward character design complexity. Every custom gets free art.</p>
+            <p>Commercial use is charged. <strong class="key-point">🫶 Off-site custom payments are due upfront or after the sketch.</strong> Only PayPal is connected on VGen.</p>
+            <p>Turnaround time is listed in commission details. Updates are sent every phase; Pawio will let clients know if there are delays.</p>
+            <p>Payment methods listed on Pawio's card: PayPal, VGen, bank transfer, and local payment apps. Other methods like Nitro, decor, and game top-ups are accepted only when announced.</p>
+          </div></article>
+        </div>
+        <div class="commission-actions"><a class="vn-button action-button action-button--rose" data-link="vgen" target="_blank" rel="noopener">OPEN VGEN <span aria-hidden="true">↗</span></a><a class="vn-button action-button action-button--blue" data-link="discord" target="_blank" rel="noopener">CUSTOM INQUIRIES <span aria-hidden="true">↗</span></a><a class="text-link" data-link="toyhouse" target="_blank" rel="noopener">Toyhouse options ↗</a></div>
+      </section>
+
+      <section id="view-shop" class="view" aria-labelledby="shop-title" hidden>
+        <header class="section-head section-head--butter"><h1 id="shop-title">Shop</h1></header>
+        <div class="shop-scene">
+          <div class="shop-awning">PAWIO'S LITTLE SHOP</div>
+          <div class="shop-body"><div class="shop-window-display"><div class="art-placeholder shop-placeholder"><span class="placeholder-label">INSERT SHOP PREVIEW</span></div><div class="display-shelf"></div></div><div class="shop-copy"><span class="coming-stamp">IN PREPARATION</span><h2>Something lovely is on its way.</h2><p>Custom IRL merchandise is still in the works. Preorder announcements are planned for December 2026 or early 2027. <strong class="key-point">🫶 No products or purchase links are confirmed yet.</strong></p><p class="shop-empty-note">The shop will open when an official catalog is available.</p></div></div>
+        </div>
+      </section>
+
+      <section id="view-tos" class="view" aria-labelledby="tos-title" hidden>
+        <header class="section-head section-head--lilac"><h1 id="tos-title">Terms of service</h1></header>
+        <p class="tos-lead">Please read Pawio's terms and notes before commissioning.</p>
+        <div class="tos-layout"><aside class="manual-index" aria-label="Contents"><a href="#tos-usage">Usage & credit</a><a href="#tos-timing">Timing & updates</a><a href="#tos-refunds">Refunds & requests</a><a href="#tos-payment">Payment notes</a></aside><div class="tos-pages">
+          <article id="tos-usage" class="tos-rule"><span class="rule-number">01</span><div><h2>Usage & credit</h2><ul><li>Do not claim Pawio's work as your own.</li><li>Pawio may post any commissions to their portfolio or socials.</li><li>Credit Pawio as <b>@pawpawio / pawpawio_</b> when using or posting the work.</li><li><strong class="key-point">🫶 Pawio does not consent to their work being used in NFT projects or AI training.</strong></li></ul></div></article>
+          <article id="tos-timing" class="tos-rule"><span class="rule-number rule-number--blue">02</span><div><h2>Timing & updates</h2><ul><li>Turnaround time is included in the commission details.</li><li>Clients will be informed if there are delays.</li><li>Updates will be sent at every phase.</li></ul></div></article>
+          <article id="tos-refunds" class="tos-rule"><span class="rule-number rule-number--butter">03</span><div><h2>Refunds & requests</h2><ul><li>Refunds are only offered if the art is not to ur liking / if I'm in the wrong.</li><li>I can decline any request for any reason.</li></ul></div></article>
+          <article id="tos-payment" class="tos-rule"><span class="rule-number rule-number--mint">04</span><div><h2>Payment notes</h2><ul><li>Off-site custom payments are strictly upfront or after the sketch.</li><li>Commercial use is charged.</li><li>Other payment methods like Nitro, decor, and game top-ups are accepted only when announced.</li></ul><p class="tos-source-note">For current commission-specific details and payment options, check the linked VGen listing or contact Pawio before ordering.</p></div></article>
+        </div></div>
+      </section>
+
+      <section id="view-doodle" class="view" aria-labelledby="doodle-title" hidden>
+        <header class="section-head section-head--mint"><h1 id="doodle-title">Doodle room</h1></header>
+        <p class="doodle-intro">Draw something small and share it with everyone in the gallery.</p>
+        <div class="doodle-layout">
+          <div class="doodle-machine">
+            <div class="canvas-wrap"><canvas id="doodle-canvas" aria-label="Drawing canvas"></canvas><div class="canvas-placeholder" id="canvas-placeholder">YOUR LITTLE DOODLE<br><small>start drawing here</small></div></div>
+            <div class="doodle-toolbar">
+              <div class="tool-row"><button class="tool-button is-selected" id="pencil-tool" type="button">✎ PENCIL</button><button class="tool-button" id="eraser-tool" type="button">⌫ ERASER</button><button class="tool-button" id="undo-doodle" type="button">↶ UNDO</button><button class="tool-button" id="clear-doodle" type="button">CLEAR</button></div>
+              <div class="tool-row tool-row--settings"><label class="color-control">INK <input id="doodle-color" type="color" value="#dc5d91" aria-label="Choose drawing color"></label><label class="size-control">SIZE <input id="doodle-size" type="range" min="2" max="28" value="6"><output id="doodle-size-value">6</output></label></div>
+              <div class="tool-row tool-row--palette" aria-label="Quick colors"><button class="swatch is-selected" data-color="#dc5d91" style="--swatch:#dc5d91" type="button" aria-label="Cherry pink"></button><button class="swatch" data-color="#66a8cf" style="--swatch:#66a8cf" type="button" aria-label="Sky blue"></button><button class="swatch" data-color="#9a77bf" style="--swatch:#9a77bf" type="button" aria-label="Lavender"></button><button class="swatch" data-color="#7eaa87" style="--swatch:#7eaa87" type="button" aria-label="Mint green"></button><button class="swatch" data-color="#e8b85d" style="--swatch:#e8b85d" type="button" aria-label="Butter yellow"></button><button class="swatch" data-color="#463c5b" style="--swatch:#463c5b" type="button" aria-label="Ink"></button></div>
+            </div>
+            <div class="machine-bottom"><label for="doodle-name">NAME <input id="doodle-name" type="text" maxlength="24" placeholder="optional nickname" autocomplete="off"></label><div class="doodle-actions"><button id="save-doodle" class="vn-button save-button" type="button">SAVE PNG <span aria-hidden="true">↓</span></button><button id="submit-doodle" class="vn-button submit-button" type="button" disabled>SUBMIT DOODLE</button></div></div>
+            <label class="honeypot" aria-hidden="true">Website <input id="doodle-website" type="text" tabindex="-1" autocomplete="off"></label>
+            <p id="submit-status" class="submit-status" role="status">The shared gallery is not connected yet. You can still save your PNG.</p>
+          </div>
+          <aside class="doodle-side">
+            <div id="gallery-window" class="gallery-window"><h2 class="window-bar window-bar--mint">Doodle gallery</h2><div id="gallery-grid" class="gallery-grid"><p class="empty-gallery">Drawings shared by visitors will appear here.</p></div></div>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="screen-footer"><span class="footer-note">Pawio's World</span><span class="music-attribution">Music: <a href="https://www.scottbuckley.com.au/library/glow/" target="_blank" rel="noopener">“Glow” by Scott Buckley · CC BY 4.0</a></span><a href="https://meownii0.neocities.org/" target="_blank" rel="noopener">Created by Meownii</a><a class="cursor-credit" href="https://www.rw-designer.com/cursor-set/rin-kagamine" target="_blank" rel="noopener noreferrer">Rin Kagamine cursor by ko · RW Designer</a></footer>
+    </main>
+  </div>
+
+  <audio id="bgm" preload="metadata" loop></audio>
+  <div id="intro-overlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="Welcome introduction" hidden>
+    <div class="intro-scene"><button id="skip-intro" class="skip-intro" type="button">SKIP ▶▶</button><div class="intro-art" aria-hidden="true"><img class="intro-sprite" data-expression="open" src="assets/images/characters/sprite-open.png" alt=""><img class="intro-sprite" data-expression="closed" src="assets/images/characters/sprite-closed.png" alt=""><img class="intro-sprite" data-expression="point" src="assets/images/characters/sprite-point.png" alt=""></div><div class="vn-dialogue" id="dialogue-box" role="button" tabindex="0" aria-label="Advance dialogue"><div class="dialogue-name">PAWIO</div><p id="dialogue-text" aria-live="polite"></p><span class="dialogue-next" id="dialogue-next" aria-hidden="true">▼</span></div></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/content.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/dialogue.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/button-sounds.js"></script>
+  <script src="js/doodle.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cursor.js"></script>
+</body>
+</html>

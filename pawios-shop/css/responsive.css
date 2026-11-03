@@ -1,0 +1,123 @@
+@media (max-width: 900px) {
+  .desktop-shell { width: min(100% - 28px, 1040px); }
+  .home-layout { grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: 20px; }
+  .character-stage { min-height: 370px; }
+  .profile-layout { grid-template-columns: minmax(190px, .75fr) 1.25fr; gap: 18px; }
+  .commission-grid { gap: 12px; }
+  .doodle-layout { grid-template-columns: minmax(0, 1.4fr) minmax(220px, .8fr); gap: 16px; }
+}
+
+@media (max-width: 680px) {
+  body { background-size: 18px 18px, 36px 36px; }
+  .desktop-shell { width: calc(100% - 18px); margin: 8px auto 16px; }
+  .topbar { min-height: 42px; padding: 5px 9px; }
+  .brand-chip { font-size: 9px; }
+  .topbar-actions { gap: 6px; }
+  .quiet-button { min-height: 32px; font-size: 7px; }
+  .music-toggle { position: static; width: 32px; height: 32px; flex: 0 0 32px; }
+  .screen-frame { min-height: 0; padding: 14px 10px 0; }
+  .view { min-height: 0; padding: 5px 0 20px; }
+  .section-toolbar { position: sticky; top: 0; z-index: 4; gap: 6px; margin: 0 -1px 12px; padding: 6px 2px 8px; background: #fffaf8ed; }
+  .home-return { flex: 0 0 auto; padding: 6px 7px; font-size: 7px; }
+  .section-nav { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+  .nav-tab { min-width: 0; min-height: 32px; padding: 4px 2px; font-size: clamp(6px, 1.7vw, 8px); letter-spacing: 0; white-space: nowrap; }
+  .home-layout { display: flex; flex-direction: column; gap: 12px; min-height: 0; padding: 4px 1px 12px; }
+  .character-stage { width: 100%; min-height: 0; height: clamp(145px, 42vw, 220px); transform: none; }
+  .placeholder-label { padding: 6px 9px; font-size: 8px; }
+  .home-menu-column { width: 100%; gap: 9px; padding: 0 2px; }
+  .logo-reservation { width: min(78%, 380px); min-height: 48px; padding: 8px; font-size: 9px; }
+  .main-menu { width: min(100%, 440px); gap: 7px; }
+  .menu-button { height: 42px; grid-template-columns: 32px 1fr 25px; padding: 0 8px; }
+  .menu-button-text { padding-left: 9px; font-size: 11px; }
+  .screen-footer { min-height: 39px; margin: 0 -10px; padding: 7px 12px; font-size: 9px; }
+  .screen-footer { flex-wrap: wrap; justify-content: center; column-gap: 11px; row-gap: 4px; padding: 8px 10px; }
+  .screen-footer .footer-note { display: none; }
+  .screen-footer .music-attribution { font-size: 8px; text-align: center; }
+  .section-head { margin: 2px 1px 12px; padding: 2px 4px 8px; }
+  .section-head h1 { font-size: clamp(19px, 6vw, 24px); }
+  .profile-layout, .doodle-layout { display: flex; flex-direction: column; gap: 12px; padding: 0 1px 8px; }
+  .profile-left { display: flex; justify-content: center; }
+  .profile-portrait { width: min(100%, 280px); height: 160px; }
+  .profile-main { gap: 10px; }
+  .dialogue-card { padding: 18px 13px 12px; }
+  .dialogue-card p { font-size: 13px; line-height: 1.65; }
+  .profile-facts { padding: 8px 10px; }
+  .profile-facts dt { font-size: 8px; }
+  .profile-facts dd { font-size: 11px; }
+  .social-links { grid-template-columns: 1fr; gap: 7px; padding: 8px; }
+  .social-link { min-width: 0; padding: 7px; }
+  .commission-intro { padding: 0 2px 12px; }
+  .commission-intro p { font-size: 13px; line-height: 1.65; }
+  .commission-grid { grid-template-columns: 1fr; gap: 9px; padding: 0 1px; }
+  .plain-list { padding: 10px 12px 12px 25px; font-size: 12px; gap: 5px; }
+  .order-notes { grid-template-columns: 1fr; gap: 0; padding: 8px 11px; }
+  .order-notes p { padding: 8px 2px; font-size: 12px; line-height: 1.6; }
+  .commission-actions { flex-wrap: wrap; gap: 8px; padding: 12px 1px 5px; }
+  .action-button { padding: 9px 11px; font-size: 8px; }
+  .shop-scene { margin: 3px 2px 12px; }
+  .shop-awning { height: 36px; font-size: 9px; }
+  .shop-body { grid-template-columns: 1fr; gap: 14px; padding: 13px 11px; }
+  .shop-window-display { min-height: 190px; }
+  .shop-placeholder { height: 160px; }
+  .shop-copy { padding: 2px 4px; }
+  .shop-copy h2 { margin: 10px 0 5px; font-size: 18px; }
+  .shop-copy p { font-size: 12px; line-height: 1.6; }
+  .tos-lead { padding: 0 2px; margin-bottom: 10px; font-size: 12px; }
+  .tos-layout { grid-template-columns: 1fr; gap: 9px; padding: 0 1px; }
+  .manual-index { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding: 9px; }
+  .manual-index a { min-width: 0; font-size: 10px; }
+  .tos-pages { gap: 8px; }
+  .tos-rule { grid-template-columns: 30px minmax(0, 1fr); gap: 8px; padding: 10px 8px; }
+  .rule-number { width: 26px; height: 26px; }
+  .tos-rule h2 { margin-bottom: 5px; font-size: 15px; }
+  .tos-rule ul { padding-left: 16px; font-size: 12px; line-height: 1.55; gap: 4px; }
+  .doodle-intro { margin: 0 2px 10px; font-size: 12px; line-height: 1.55; }
+  .doodle-machine { min-width: 0; padding: 8px; }
+  .canvas-wrap { height: clamp(210px, 68vw, 300px); }
+  .doodle-toolbar { padding: 7px; margin-top: 8px; }
+  .tool-row { flex-wrap: wrap; gap: 6px; }
+  .tool-row + .tool-row { margin-top: 8px; }
+  .tool-button { min-height: 34px; padding: 5px 8px; font-size: 8px; }
+  .tool-row--settings { justify-content: space-between; }
+  .color-control, .size-control { gap: 5px; font-size: 8px; }
+  .size-control input { width: min(120px, 28vw) !important; }
+  .machine-bottom { align-items: stretch; flex-direction: column; gap: 9px; font-size: 8px; }
+  .machine-bottom input { width: min(100%, 250px); min-height: 36px; font-size: 13px; }
+  .doodle-actions { justify-content: flex-end; flex-wrap: wrap; gap: 7px; }
+  .save-button, .submit-button { min-height: 36px; padding: 8px 10px; font-size: 8px; }
+  .submit-status { margin: 8px 1px 0; font-size: 10px; line-height: 1.5; }
+  .doodle-side { gap: 10px; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; padding: 8px; }
+  .gallery-card { min-width: 0; padding: 5px; }
+  .intro-overlay { padding: 9px; }
+  .intro-scene { width: min(100%, 760px); height: min(470px, calc(100dvh - 18px)); min-height: 300px; }
+  .intro-art { inset: 0 0 104px; }
+  .skip-intro { top: 10px; right: 10px; min-height: 35px; font-size: 8px; }
+  .vn-dialogue { left: 10px; right: 10px; bottom: 10px; min-height: 100px; padding: 23px 13px 15px; }
+  .dialogue-name { left: 13px; font-size: 10px; }
+  .vn-dialogue p { min-height: 42px; font-size: clamp(13px, 4vw, 16px); line-height: 1.5; }
+  .dialogue-next { right: 9px; bottom: 8px; }
+}
+
+@media (max-width: 370px) {
+  .desktop-shell { width: calc(100% - 12px); }
+  .screen-frame { padding-left: 7px; padding-right: 7px; }
+  .brand-chip { font-size: 8px; }
+  .quiet-button { padding-inline: 6px; font-size: 6px; }
+  .section-toolbar { gap: 4px; }
+  .home-return { padding: 5px; font-size: 6px; }
+  .nav-tab { font-size: 6px; }
+  .character-stage { height: 150px; }
+  .logo-reservation { min-height: 44px; font-size: 8px; }
+  .menu-button { height: 40px; }
+  .menu-button-text { font-size: 10px; }
+  .screen-footer { margin-left: -7px; margin-right: -7px; padding-inline: 9px; }
+  .canvas-wrap { height: 205px; }
+  .size-control input { width: 82px !important; }
+  .doodle-actions { justify-content: stretch; }
+  .save-button, .submit-button { flex: 1 1 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

@@ -53,7 +53,7 @@
 
 
 /* Heart photo fitted to the opening in Pawio's frame. */
-:root{--body:'Jua',sans-serif;--display:'Jua',sans-serif;--pixel:'Jua',sans-serif}
+:root{--body:'Zen Maru Gothic',sans-serif;--display:'Cherry Bomb One','Jua',sans-serif;--pixel:'DotGothic16',sans-serif;--cute:'Jua',sans-serif}
 .profile-portrait{position:relative;width:100%;max-width:290px;aspect-ratio:1;height:auto;overflow:visible;border:0;outline:0;background:none;box-shadow:none;filter:drop-shadow(0 5px 5px rgba(112,68,95,.18))}
 .profile-portrait .profile-face{position:absolute;inset:15%;z-index:1;display:block;width:70%;height:70%;object-fit:cover;object-position:center 45%;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 88 C42 81 23 65 16 51 C7 34 15 16 30 15 C40 15 47 22 50 31 C54 22 61 15 71 15 C86 16 94 34 84 51 C77 65 58 81 50 88 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 88 C42 81 23 65 16 51 C7 34 15 16 30 15 C40 15 47 22 50 31 C54 22 61 15 71 15 C86 16 94 34 84 51 C77 65 58 81 50 88 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 .profile-portrait .heart-frame{position:absolute;z-index:2;inset:0;display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;border:0;background:none;box-shadow:none;filter:none;-webkit-mask:none;mask:none}
@@ -70,6 +70,38 @@
 .social-link small{font-size:11px;line-height:1.35}
 .section-head h1{font-family:var(--display);font-size:32px;line-height:1.2}
 .shop-copy h2{font-family:var(--display);font-size:22px;line-height:1.38;font-weight:400}
+
+/* Soft, rounded shapes and a clear font hierarchy across the site. */
+.desktop-shell,.topbar,.screen-frame{border-radius:20px}
+.screen-frame:before{border-radius:14px}
+.topbar{overflow:hidden}
+.section-toolbar,.section-head,.dialogue-card,.profile-facts,.social-window,.social-link,
+.info-window,.shop-scene,.shop-window-display,.shop-placeholder,.shop-copy,.shop-empty-note,
+.commission-intro,.manual-index,.tos-rule,.doodle-machine,.canvas-wrap,.doodle-toolbar,
+.gallery-window,.gallery-card,.intro-scene,.vn-dialogue,.vn-button,.nav-tab,.home-return,
+.name-plate,.window-bar,.coming-stamp,.action-button,.tool-button,.submit-button,.save-button{
+ border-radius:14px;
+}
+.section-nav{gap:8px}
+.shop-awning{border-radius:12px 12px 0 0}
+.section-head h1,.shop-copy h2{font-family:'Cherry Bomb One','Jua',sans-serif;font-weight:400}
+.dialogue-card p,.profile-facts dd,.shop-copy p,.plain-list,.order-notes p,.tos-rule ul,.commission-intro p{font-family:'Zen Maru Gothic',sans-serif;font-weight:500}
+.name-plate,.coming-stamp,.window-bar,.brand-chip,.quiet-button,.home-return,.nav-tab,.tool-button,.save-button,.submit-button{font-family:'DotGothic16',sans-serif}
+.social-window>.window-bar{font-family:'Jua',sans-serif;font-size:14px;letter-spacing:.02em}
+.profile-left{display:flex;justify-content:center;align-items:flex-start}
+.profile-portrait{aspect-ratio:1;width:min(100%,320px);max-width:320px;overflow:visible;background:transparent;border:0;box-shadow:none;filter:drop-shadow(0 6px 8px rgba(112,68,95,.16))}
+.profile-portrait .profile-face{inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 78 C43 72 27 60 22 51 C15 39 19 29 29 28 C38 27 46 32 50 40 C54 32 62 27 71 28 C81 29 85 39 78 51 C73 60 57 72 50 78 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 78 C43 72 27 60 22 51 C15 39 19 29 29 28 C38 27 46 32 50 40 C54 32 62 27 71 28 C81 29 85 39 78 51 C73 60 57 72 50 78 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.profile-portrait .heart-frame{object-fit:contain}
+.shop-window-display{min-height:360px}
+.shop-placeholder{height:315px}
+.shop-art-character{right:7%;bottom:31px;height:300px;max-width:58%}
+@media(max-width:680px){
+ .profile-portrait{width:min(100%,320px);max-width:320px}
+ .shop-window-display{min-height:260px}
+ .shop-placeholder{height:215px}
+ .shop-art-character{right:7%;bottom:29px;height:205px;max-width:58%}
+}
+@media(max-width:390px){.shop-art-character{height:190px}}
 @media(max-width:680px){
  .profile-portrait{width:min(100%,290px);height:auto;aspect-ratio:1}
  .shop-awning{min-height:66px;justify-content:center;padding:8px 12px;font-size:14px;letter-spacing:0}

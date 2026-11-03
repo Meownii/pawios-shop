@@ -97,6 +97,7 @@
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(response.status === 413 ? 'Drawing is too large. You can save the PNG instead.' : result.error || 'Submission failed');
+      if (result.status !== 'published') throw new Error('The server accepted the request but did not confirm publication. The site owner needs to redeploy the latest submit-doodle function and run the latest schema.sql.');
       setStatus('Your doodle is on the wall! Thanks for sharing.');
       $('doodle-name').value = ''; $('doodle-website').value = '';
       await loadGallery();

@@ -48,14 +48,11 @@
     a.className = `social-link social-link--${key}`; a.href = item.url; a.target = '_blank'; a.rel = 'noopener';
     a.setAttribute('aria-label', `${item.label}: ${item.note}`);
     const icon = document.createElement('span'); icon.className = 'social-icon'; icon.setAttribute('aria-hidden', 'true');
-    if (key === 'instagram') {
-      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('viewBox', '0 0 24 24');
-      const frame = document.createElementNS(svg.namespaceURI, 'rect'); frame.setAttribute('x','3.5'); frame.setAttribute('y','3.5'); frame.setAttribute('width','17'); frame.setAttribute('height','17'); frame.setAttribute('rx','5');
-      const lens = document.createElementNS(svg.namespaceURI, 'circle'); lens.setAttribute('cx','12'); lens.setAttribute('cy','12'); lens.setAttribute('r','4');
-      const flash = document.createElementNS(svg.namespaceURI, 'circle'); flash.setAttribute('cx','17.5'); flash.setAttribute('cy','6.8'); flash.setAttribute('r','1'); flash.setAttribute('fill','currentColor'); flash.setAttribute('stroke','none');
-      svg.append(frame,lens,flash); icon.append(svg);
-    } else icon.textContent = ['◉', '↗', '◇'][i] || '↗';
+    const iconImage = document.createElement('img');
+    iconImage.src = "assets/images/social/" + ['social-1.webp','social-2.webp','social-3.webp','social-4.webp'][i];
+    iconImage.alt = '';
+    iconImage.loading = 'lazy';
+    icon.append(iconImage);
     const copy = document.createElement('span'); const label = document.createElement('b'); label.textContent = item.label; const note = document.createElement('small'); note.textContent = item.note; copy.append(label, note);
     const out = document.createElement('span'); out.className = 'social-out'; out.textContent = '↗'; a.append(icon, copy, out); social.append(a);
   });

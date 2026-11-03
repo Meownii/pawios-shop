@@ -50,3 +50,26 @@
   .rin-cursor.is-hidden { opacity: 0; }
 }
 @media (hover: hover) and (pointer: fine) { .cursor-credit { color: #9b8191; font: 7px var(--pixel); text-decoration: none; white-space: nowrap; } .cursor-credit:hover, .cursor-credit:focus-visible { color: #c94f86; text-decoration: underline; } }
+
+
+/* Pawio's rounded type and heart-shaped portrait */
+:root{--body:'Baloo 2',sans-serif;--display:'Fredoka',sans-serif}
+.profile-portrait{max-width:265px;aspect-ratio:1;border:0;outline:0;background:none;box-shadow:none;overflow:visible;filter:drop-shadow(0 5px 4px rgba(112,68,95,.2))}
+.profile-portrait img{object-fit:cover;object-position:center 42%;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 94 9 54C-7 36 5 9 26 8c12 0 20 7 24 17C55 15 64 8 76 8c21 1 31 28 15 46z'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 94 9 54C-7 36 5 9 26 8c12 0 20 7 24 17C55 15 64 8 76 8c21 1 31 28 15 46z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.social-link{border-radius:18px}
+.social-icon{width:48px;height:48px;flex:0 0 48px;border-radius:50%;overflow:hidden;background:#fff;border:2px solid #fff;box-shadow:0 0 0 1px #e9ccda}
+.social-icon img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.shop-awning{position:relative;min-height:62px;height:auto;display:flex;align-items:center;justify-content:center;padding:10px 120px 10px 16px;color:#74445e;font:14px/1.25 var(--display);font-weight:600;letter-spacing:.06em;text-shadow:0 1px #fff;border-bottom:3px solid #d8bd72}
+.shop-awning span{position:relative;z-index:1}
+.shop-awning img{position:absolute;z-index:2;right:15px;top:50%;width:112px;height:112px;transform:translateY(-42%);object-fit:cover;object-position:center 40%;border-radius:50%;border:4px solid #fff8f2;outline:2px solid #dc91b0;background:#fff7f8;box-shadow:0 4px 10px rgba(95,62,83,.2)}
+.social-link b{font-family:var(--display);font-size:14px}
+.social-link small{font-size:11px;line-height:1.3}
+.shop-copy h2{font-family:var(--display);font-weight:600}
+@media(max-width:680px){
+  .profile-portrait{width:min(100%,240px);height:240px;aspect-ratio:1}
+  .shop-awning{min-height:62px;justify-content:flex-start;padding:8px 77px 8px 12px;font-size:12px;letter-spacing:.025em}
+  .shop-awning img{right:7px;width:74px;height:74px;border-width:3px;transform:translateY(-43%)}
+  .social-links{grid-template-columns:1fr}
+  .social-icon{width:44px;height:44px;flex-basis:44px}
+}
+@media(max-width:390px){.shop-awning{font-size:10px;padding-left:9px;padding-right:68px}.shop-awning img{width:64px;height:64px}}

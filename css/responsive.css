@@ -187,7 +187,7 @@
   .social-link b { font-family: 'Cherry Bomb One', sans-serif; font-weight: 400; }
   .window-bar, .social-window > .window-bar { font-family: 'DotGothic16', sans-serif; }
   .name-plate { font-family: 'Dancing Script', cursive; font-size: 15px; }
-  .profile-portrait .profile-face { inset: 21%; width: 58%; height: 58%; object-position: center 50%; }
+  .profile-portrait .profile-face { top: 18%; left: 25%; right: auto; bottom: auto; width: 50%; height: 64%; object-fit: fill; object-position: center 50%; }
   .shop-speech { top: 13%; right: 38%; max-width: 62%; padding: 5px 9px; font-size: 10px; }
   .section-nav,.section-head,.dialogue-card,.profile-facts,.social-window,.social-link,.info-window,.shop-scene,.shop-window-display,.shop-placeholder,.shop-copy,.shop-empty-note,.commission-intro,.manual-index,.tos-rule,.doodle-machine,.canvas-wrap,.doodle-toolbar,.gallery-window,.gallery-card,.intro-scene,.vn-dialogue,.vn-button,.nav-tab,.home-return,.action-button,.tool-button,.submit-button,.save-button { border-radius: 18px; }
 }

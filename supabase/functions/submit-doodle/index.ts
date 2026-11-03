@@ -3,11 +3,11 @@ import { createClient } from 'npm:@supabase/supabase-js@2';
 const MAX_IMAGE_BYTES = 512 * 1024;
 const MAX_BODY_BYTES = 720 * 1024;
 const encoder = new TextEncoder();
+const ALLOWED_ORIGINS = new Set(['https://meownii.github.io']);
 
 Deno.serve(async (request: Request) => {
-  const allowed = (Deno.env.get('ALLOWED_ORIGINS') ?? '').split(',').map(v => v.trim()).filter(Boolean);
   const origin = request.headers.get('origin') ?? '';
-  const corsOrigin = allowed.includes(origin) ? origin : '';
+  const corsOrigin = ALLOWED_ORIGINS.has(origin) ? origin : '';
   const headers = {
     'Access-Control-Allow-Origin': corsOrigin,
     'Access-Control-Allow-Headers': 'authorization, apikey, content-type',
@@ -19,7 +19,7 @@ Deno.serve(async (request: Request) => {
   const reply = (status: number, body: Record<string, unknown>) => new Response(JSON.stringify(body), { status, headers });
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
   if (request.method !== 'POST') return reply(405, { error: 'Method not allowed' });
-  if (!corsOrigin || !allowed.includes(origin)) return reply(403, { error: 'Origin not allowed' });
+  if (!corsOrigin) return reply(403, { error: 'Origin not allowed' });
 
   const contentLength = Number(request.headers.get('content-length') ?? 0);
   if (contentLength > MAX_BODY_BYTES) return reply(413, { error: 'Submission too large' });
@@ -47,11 +47,11 @@ Deno.serve(async (request: Request) => {
 
   const projectUrl = Deno.env.get('SUPABASE_URL');
   const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-  const pepper = Deno.env.get('RATE_LIMIT_PEPPER');
-  if (!projectUrl || !serviceKey || !pepper) return reply(503, { error: 'Submission service is not configured' });
+  if (!projectUrl || !serviceKey) return reply(503, { error: 'Submission service is not configured' });
 
   const ip = request.headers.get('cf-connecting-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
-  const digest = await crypto.subtle.digest('SHA-256', encoder.encode(`${pepper}:${ip}`));
+  const hmacKey = await crypto.subtle.importKey('raw', encoder.encode(serviceKey), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const digest = await crypto.subtle.sign('HMAC', hmacKey, encoder.encode(ip));
   const ipHash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
   const windowKey = `${ipHash}:${Math.floor(Date.now() / (15 * 60 * 1000))}`;
   const supabase = createClient(projectUrl, serviceKey, { auth: { persistSession: false, autoRefreshToken: false } });
@@ -63,10 +63,10 @@ Deno.serve(async (request: Request) => {
   const imagePath = `${id}.png`;
   const { error: uploadError } = await supabase.storage.from('doodle-submissions').upload(imagePath, bytes, { contentType: 'image/png', cacheControl: '3600', upsert: false });
   if (uploadError) return reply(503, { error: 'Drawing could not be saved' });
-  const { error: insertError } = await supabase.from('doodles').insert({ id, nickname: nickname || 'Anonymous', image_path: imagePath, status: 'pending' });
+  const { error: insertError } = await supabase.from('doodles').insert({ id, nickname: nickname || 'Anonymous', image_path: imagePath });
   if (insertError) {
     await supabase.storage.from('doodle-submissions').remove([imagePath]);
     return reply(503, { error: 'Drawing could not be saved' });
   }
-  return reply(201, { accepted: true, status: 'pending' });
+  return reply(201, { accepted: true, status: 'published' });
 });

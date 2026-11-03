@@ -89,9 +89,6 @@
   .doodle-side { gap: 10px; }
   .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; padding: 8px; }
   .gallery-card { min-width: 0; padding: 5px; }
-  .admin-panel { padding: 9px; }
-  .admin-card { grid-template-columns: 62px minmax(0, 1fr); }
-  .admin-card img { width: 62px; height: 62px; }
   .intro-overlay { padding: 9px; }
   .intro-scene { width: min(100%, 760px); height: min(470px, calc(100dvh - 18px)); min-height: 300px; }
   .intro-art { inset: 0 0 104px; }

@@ -44,39 +44,25 @@ The small speaker toggle enables or mutes gentle synthesized UI button sounds. T
 
 The profile, commission details, prices and payment notes, links, shop status, and terms were transcribed from Pawio's public Carrd on 27 October 2026. The site links to VGen and Toyhouse for current commission options and prices instead of inventing amounts. No products or purchase links were listed on the Carrd; the Shop states that the physical merchandise catalog is still in preparation. Review the copy against the live Carrd before making a future policy or price change.
 
-## Doodle Room: local editor and shared gallery
+## Doodle Room: local editor and shared instant-publish gallery
 
-The drawing canvas, pencil, eraser, color and width controls, undo, clear, optional nickname, and PNG download work without any backend. Visitors can always save their PNG. A shared gallery and upload button are **not active until the Supabase setup below is completed**. The browser config intentionally has empty URL/key values, so the site does not claim to store drawings yet.
+The editor works locally: pencil, eraser, color and width controls, undo, clear, optional nickname, and PNG download. Persistent shared submissions require Supabase because GitHub Pages only serves static files. When connected, a drawing is published to the gallery immediately; there is no approval queue, admin sign-in, or delete control. The Supabase project URL is prefilled in the browser config; its public key and the submissions switch still need to be set before uploads are enabled.
 
-### Configure Supabase (required for persistent submissions)
+### Configure Supabase
 
-The integration uses a private Storage bucket, a Postgres table with `pending`/`approved`/`rejected` states, Row Level Security, and an Edge Function. New submissions remain private pending review. Only authenticated user IDs listed in `doodle_admins` can see the queue, approve, reject, or delete. The browser contains only the Supabase project URL and public anon/publishable key; never put a `service_role` key in this static site.
-
-1. Create a Supabase project. Install the Supabase CLI and authenticate it.
-2. In the SQL Editor, run [`supabase/schema.sql`](supabase/schema.sql).
-3. Deploy the function from this project directory:
+1. In the Supabase SQL Editor, run [`supabase/schema.sql`](supabase/schema.sql). It creates the gallery and Storage bucket, and also upgrades the previous moderation-based schema if it was already installed. Existing doodles become public in the gallery.
+2. From the project root, deploy the Edge Function (the root is the folder containing `index.html` and `supabase/`):
 
    ```sh
    supabase link --project-ref YOUR_PROJECT_REF
    supabase functions deploy submit-doodle --no-verify-jwt
    ```
 
-   `--no-verify-jwt` is needed because visitors submit anonymously. The function validates the exact allowed origin, PNG signature, image/body size, honeypot, and rate limit itself. It uses the server-side `SUPABASE_SERVICE_ROLE_KEY` only inside the Edge Function runtime.
-4. Set the function secrets. Use the exact GitHub Pages origin (no path) in `ALLOWED_ORIGINS`; for a custom domain, list that origin too. Generate a long random secret for the rate-limit pepper:
+   Anonymous visitors need `--no-verify-jwt`. The function validates the site's allowed origin, PNG signature and dimensions, 512 KiB upload limit, honeypot, and five-submission-per-15-minute rate limit. It uses Supabase's server-injected `SUPABASE_SERVICE_ROLE_KEY` only inside the Edge Function. No custom function secrets or Auth setup are required.
+3. In `js/supabase-config.js`, set `url` to the Supabase Project URL, `anonKey` to the public anon/publishable key, and `submissionsEnabled` to `true`. The public key belongs in the website; never put a service-role/secret key in the browser.
+4. Publish the site and test a submission. Refresh another browser to confirm the drawing appears in the shared gallery.
 
-   ```sh
-   supabase secrets set ALLOWED_ORIGINS="https://YOUR-USER.github.io" RATE_LIMIT_PEPPER="LONG_RANDOM_SECRET"
-   ```
-
-   Supabase supplies `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` to Edge Functions. If those are missing in your project, add them through the Supabase function secrets settings. Never place either secret in `js/supabase-config.js`.
-5. In `js/supabase-config.js`, set `url` to the project URL and `anonKey` to the project's public anon/publishable key. These values are visible to visitors by design; database/storage policies must remain enabled. Only after deploying the function and confirming its secrets/origin, set `submissionsEnabled: true`; this is the explicit switch that enables visitor uploads.
-6. In Supabase **Authentication → URL Configuration**, add the published site URL to the allowed redirect URLs, including the Pages subpath if applicable. Enable email sign-in and configure email delivery.
-7. Create the owner's Auth user using the chosen email sign-in method. Add that user's Auth UUID to `doodle_admins` in the SQL Editor. The example query at the bottom of `schema.sql` can insert by email; replace the example with the owner's email and run it once. Do not expose an admin API key.
-8. Publish the updated site. Test one anonymous submission, confirm it appears only in the owner queue, approve it, then check that the approved gallery displays it from a second browser.
-
-The Edge Function limits each hashed IP window to five attempts per 15 minutes and accepts PNG files up to 512 KiB. Submitted nickname text is limited to 24 characters. Images are stored in a private bucket and shown through short-lived signed URLs. Supabase Auth magic links secure the owner moderation session; database and Storage RLS enforce permissions even if someone calls the APIs directly.
-
-Relevant Supabase references: [Row Level Security](https://supabase.com/docs/guides/database/postgres/row-level-security), [Storage access control](https://supabase.com/docs/guides/storage/security/access-control), [Edge Function secrets](https://supabase.com/docs/guides/functions/secrets), [Auth](https://supabase.com/docs/guides/auth).
+For a custom website domain, add its origin to `ALLOWED_ORIGINS` in `supabase/functions/submit-doodle/index.ts` and redeploy. Supabase provides `SUPABASE_URL` and the server key to the hosted function automatically. Images are public because they are shared gallery posts; browser visitors cannot upload directly to Storage or edit gallery records.
 
 ## Fonts and accessibility
 

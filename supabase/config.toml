@@ -1,4 +1,4 @@
 [functions.submit-doodle]
 # Anonymous submissions are accepted only through this function. It validates input,
-# applies a server-side rate limit, and writes with the server-only service role key.
+# applies a server-side rate limit, and publishes each accepted drawing immediately.
 verify_jwt = false

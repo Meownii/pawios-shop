@@ -46,41 +46,34 @@
 
   const config = window.PAWIO_SUPABASE || {};
   const status = $('submit-status'), submit = $('submit-doodle');
-  let client = null, isAdmin = false;
+  let client = null;
   const setStatus = (message, error = false) => { status.textContent = message; status.classList.toggle('is-error', error); };
   const ready = Boolean(config.url && config.anonKey && window.supabase?.createClient);
   const submissionsReady = ready && config.submissionsEnabled === true;
   if (!ready) {
-    setStatus('Shared gallery setup is pending. You can still save your PNG.');
+    setStatus('The shared gallery is not connected yet. You can still save your PNG.');
     $('gallery-grid').innerHTML = '<p class="empty-gallery">The shared gallery will appear here after setup.</p>';
-    $('admin-open').hidden = true;
   } else {
-    client = window.supabase.createClient(config.url, config.anonKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
+    client = window.supabase.createClient(config.url, config.anonKey);
     submit.disabled = !submissionsReady;
-    setStatus(submissionsReady ? 'Your drawing will be reviewed before it appears in the gallery.' : 'Gallery connected. Submissions remain paused until the upload function is deployed.');
-    $('admin-open').hidden = false;
-    $('admin-open').addEventListener('click', () => { $('admin-panel').hidden = !$('admin-panel').hidden; });
-    $('admin-send-link').addEventListener('click', sendAdminLink);
-    $('admin-signout').addEventListener('click', async () => { await client.auth.signOut(); isAdmin = false; renderAdmin(false); });
+    setStatus(submissionsReady ? 'Drawings appear in the shared gallery as soon as they are sent.' : 'The gallery is connected, but drawing submissions are not enabled yet.');
     if (submissionsReady) submit.addEventListener('click', submitDoodle);
-    client.auth.onAuthStateChange((_event, session) => { window.setTimeout(() => checkAdmin(session), 0); });
-    client.auth.getSession().then(({ data }) => checkAdmin(data.session));
     loadGallery();
-    window.addEventListener('pawio:viewchange', event => { if (event.detail.view === 'doodle') { loadGallery(); if (isAdmin) loadQueue(); } });
+    window.addEventListener('pawio:viewchange', event => { if (event.detail.view === 'doodle') loadGallery(); });
+    window.setInterval(loadGallery, 60_000);
   }
 
   async function loadGallery() {
     const grid = $('gallery-grid');
     try {
-      const { data, error } = await client.from('doodles').select('id, nickname, image_path, created_at').eq('status', 'approved').order('created_at', { ascending: false }).limit(48);
+      const { data, error } = await client.from('doodles').select('id, nickname, image_path, created_at').order('created_at', { ascending: false }).limit(48);
       if (error) throw error;
       grid.replaceChildren();
       if (!data.length) { grid.innerHTML = '<p class="empty-gallery">No doodles in the gallery yet.</p>'; return; }
       for (const doodle of data) {
-        const { data: image, error: imageError } = await client.storage.from(config.bucket || 'doodle-submissions').createSignedUrl(doodle.image_path, 3600);
-        if (imageError) continue;
+        const { data: image } = client.storage.from(config.bucket || 'doodle-submissions').getPublicUrl(doodle.image_path);
         const card = document.createElement('figure'); card.className = 'gallery-card';
-        const img = document.createElement('img'); img.src = image.signedUrl; img.alt = doodle.nickname ? `Doodle by ${doodle.nickname}` : 'Visitor doodle'; img.loading = 'lazy';
+        const img = document.createElement('img'); img.src = image.publicUrl; img.alt = doodle.nickname ? `Doodle by ${doodle.nickname}` : 'Visitor doodle'; img.loading = 'lazy';
         const caption = document.createElement('figcaption'); caption.textContent = doodle.nickname || 'Anonymous'; card.append(img, caption); grid.append(card);
       }
       if (!grid.children.length) grid.innerHTML = '<p class="empty-gallery">Gallery images are temporarily unavailable.</p>';
@@ -91,7 +84,7 @@
     if (!ready || submit.disabled) return;
     if (!hasDrawing) { setStatus('Draw something before submitting.'); return; }
     if ($('doodle-website').value) { setStatus('Submission could not be completed.', true); return; }
-    submit.disabled = true; setStatus('Sending your drawing for review…');
+    submit.disabled = true; setStatus('Sending your doodle…');
     try {
       const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
       if (!blob || blob.size > 512 * 1024) { setStatus('This drawing is over the 512 KiB limit. Save its PNG or simplify the image and try again.', true); return; }
@@ -104,60 +97,11 @@
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(response.status === 413 ? 'Drawing is too large. You can save the PNG instead.' : result.error || 'Submission failed');
-      setStatus('Submitted! Your doodle will appear after approval.');
+      setStatus('Your doodle is on the wall! Thanks for sharing.');
       $('doodle-name').value = ''; $('doodle-website').value = '';
+      await loadGallery();
     } catch (error) { setStatus(error.message === 'Failed to fetch' ? 'The shared gallery is unavailable right now. Your drawing is still here; you can save its PNG.' : error.message === 'Drawing is too large. You can save the PNG instead.' ? error.message : 'The drawing could not be submitted. Please try again or save the PNG.', true); }
     finally { submit.disabled = false; }
-  }
-
-  async function sendAdminLink() {
-    const email = $('admin-email').value.trim(), feedback = $('admin-auth-status');
-    feedback.textContent = '';
-    if (!email) { feedback.textContent = 'Enter the owner email to receive a sign-in link.'; return; }
-    const { error } = await client.auth.signInWithOtp({ email, options: { emailRedirectTo: `${location.origin}${location.pathname}?admin=1` } });
-    feedback.textContent = error ? 'Could not send the sign-in link. Check the auth setup.' : 'Check the owner inbox for a secure sign-in link.';
-  }
-
-  async function checkAdmin(session) {
-    if (!session) { isAdmin = false; renderAdmin(false); return; }
-    const { data, error } = await client.rpc('is_doodle_admin');
-    isAdmin = !error && data === true; renderAdmin(isAdmin);
-    if (isAdmin) loadQueue();
-  }
-  function renderAdmin(active) {
-    $('admin-panel').hidden = !active;
-    $('admin-auth').hidden = active;
-    $('admin-signout').hidden = !active;
-    $('admin-queue').hidden = !active;
-  }
-  async function loadQueue() {
-    if (!isAdmin) return;
-    const queue = $('admin-queue'); queue.replaceChildren();
-    const { data, error } = await client.from('doodles').select('id, nickname, image_path, created_at').eq('status', 'pending').order('created_at', { ascending: true }).limit(100);
-    if (error) { queue.textContent = 'Could not load the moderation queue.'; return; }
-    if (!data.length) { queue.textContent = 'The moderation queue is clear.'; return; }
-    for (const doodle of data) {
-      const { data: image } = await client.storage.from(config.bucket || 'doodle-submissions').createSignedUrl(doodle.image_path, 3600);
-      const card = document.createElement('article'); card.className = 'admin-card';
-      if (image?.signedUrl) { const img = document.createElement('img'); img.src = image.signedUrl; img.alt = 'Pending visitor doodle'; card.append(img); }
-      const details = document.createElement('div'), name = document.createElement('b'), actions = document.createElement('div');
-      name.textContent = doodle.nickname || 'Anonymous'; actions.className = 'admin-actions'; details.append(name, actions); card.append(details);
-      actions.append(actionButton('Approve', () => moderate(doodle, 'approved')), actionButton('Reject', () => moderate(doodle, 'rejected')), actionButton('Delete', () => removeDoodle(doodle)));
-      queue.append(card);
-    }
-  }
-  function actionButton(label, action) { const button = document.createElement('button'); button.className = 'tool-button'; button.type = 'button'; button.textContent = label; button.addEventListener('click', action); return button; }
-  async function moderate(doodle, decision) {
-    const { error } = await client.from('doodles').update({ status: decision }).eq('id', doodle.id);
-    if (error) { $('admin-auth-status').textContent = 'Could not update this doodle.'; return; }
-    loadQueue(); if (decision === 'approved') loadGallery();
-  }
-  async function removeDoodle(doodle) {
-    const { error: storageError } = await client.storage.from(config.bucket || 'doodle-submissions').remove([doodle.image_path]);
-    if (storageError) { $('admin-auth-status').textContent = 'Could not remove the image.'; return; }
-    const { error } = await client.from('doodles').delete().eq('id', doodle.id);
-    if (error) { $('admin-auth-status').textContent = 'The image is removed, but its record could not be deleted.'; return; }
-    loadQueue(); loadGallery();
   }
 
   new ResizeObserver(resizeCanvas).observe(canvas.parentElement);

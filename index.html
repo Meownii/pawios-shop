@@ -118,7 +118,7 @@
 
       <section id="view-doodle" class="view" aria-labelledby="doodle-title" hidden>
         <header class="section-head section-head--mint"><h1 id="doodle-title">Doodle room</h1></header>
-        <p class="doodle-intro">Draw something small, then save it or send it to the moderated gallery.</p>
+        <p class="doodle-intro">Draw something small and share it with everyone in the gallery.</p>
         <div class="doodle-layout">
           <div class="doodle-machine">
             <div class="canvas-wrap"><canvas id="doodle-canvas" aria-label="Drawing canvas"></canvas><div class="canvas-placeholder" id="canvas-placeholder">YOUR LITTLE DOODLE<br><small>start drawing here</small></div></div>
@@ -129,12 +129,10 @@
             </div>
             <div class="machine-bottom"><label for="doodle-name">NAME <input id="doodle-name" type="text" maxlength="24" placeholder="optional nickname" autocomplete="off"></label><div class="doodle-actions"><button id="save-doodle" class="vn-button save-button" type="button">SAVE PNG <span aria-hidden="true">↓</span></button><button id="submit-doodle" class="vn-button submit-button" type="button" disabled>SUBMIT DOODLE</button></div></div>
             <label class="honeypot" aria-hidden="true">Website <input id="doodle-website" type="text" tabindex="-1" autocomplete="off"></label>
-            <p id="submit-status" class="submit-status" role="status"><span class="key-point">🫶 Shared gallery setup is pending.</span> You can still save your PNG.</p>
+            <p id="submit-status" class="submit-status" role="status">The shared gallery is not connected yet. You can still save your PNG.</p>
           </div>
           <aside class="doodle-side">
-            <div id="gallery-window" class="gallery-window"><h2 class="window-bar window-bar--mint">Approved doodles</h2><div id="gallery-grid" class="gallery-grid"><p class="empty-gallery">The shared gallery will appear here after setup.</p></div></div>
-            <button id="admin-open" class="admin-open" type="button" hidden>Artist sign-in</button>
-            <section id="admin-panel" class="admin-panel" hidden aria-label="Doodle moderation"><div class="admin-heading"><h2>Moderation</h2><button id="admin-signout" class="text-link" type="button" hidden>Sign out</button></div><div id="admin-auth"><label for="admin-email">Owner email</label><input id="admin-email" type="email" autocomplete="email" placeholder="email address"><button id="admin-send-link" class="tool-button" type="button">SEND SIGN-IN LINK</button><p id="admin-auth-status" role="status"></p></div><div id="admin-queue" hidden></div></section>
+            <div id="gallery-window" class="gallery-window"><h2 class="window-bar window-bar--mint">Doodle gallery</h2><div id="gallery-grid" class="gallery-grid"><p class="empty-gallery">Drawings shared by visitors will appear here.</p></div></div>
           </aside>
         </div>
       </section>

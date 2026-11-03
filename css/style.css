@@ -53,7 +53,7 @@
 
 
 /* Heart photo fitted to the opening in Pawio's frame. */
-:root{--body:'Zen Maru Gothic',sans-serif;--display:'Cherry Bomb One','Jua',sans-serif;--pixel:'DotGothic16',sans-serif;--cute:'Jua',sans-serif}
+:root{--body:'M PLUS Rounded 1c',sans-serif;--display:'Mochiy Pop One',sans-serif;--pixel:'DotGothic16',sans-serif;--cute:'Cherry Bomb One',sans-serif;--hand:'Yusei Magic',sans-serif;--script:'Dancing Script',cursive;--soft:'Hachi Maru Pop',sans-serif}
 .profile-portrait{position:relative;width:100%;max-width:290px;aspect-ratio:1;height:auto;overflow:visible;border:0;outline:0;background:none;box-shadow:none;filter:drop-shadow(0 5px 5px rgba(112,68,95,.18))}
 .profile-portrait .profile-face{position:absolute;inset:15%;z-index:1;display:block;width:70%;height:70%;object-fit:cover;object-position:center 45%;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 88 C42 81 23 65 16 51 C7 34 15 16 30 15 C40 15 47 22 50 31 C54 22 61 15 71 15 C86 16 94 34 84 51 C77 65 58 81 50 88 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 88 C42 81 23 65 16 51 C7 34 15 16 30 15 C40 15 47 22 50 31 C54 22 61 15 71 15 C86 16 94 34 84 51 C77 65 58 81 50 88 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 .profile-portrait .heart-frame{position:absolute;z-index:2;inset:0;display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;border:0;background:none;box-shadow:none;filter:none;-webkit-mask:none;mask:none}
@@ -91,6 +91,7 @@
 .profile-left{display:flex;justify-content:center;align-items:flex-start}
 .profile-portrait{aspect-ratio:1;width:min(100%,320px);max-width:320px;overflow:visible;background:transparent;border:0;box-shadow:none;filter:drop-shadow(0 6px 8px rgba(112,68,95,.16))}
 .profile-portrait .profile-face{inset:20%;width:60%;height:60%;object-fit:cover;object-position:center 53%;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 94 C38 84 7 61 4 43 C1 23 17 12 34 14 C43 15 48 22 50 31 C52 22 57 15 66 14 C83 12 99 23 96 43 C93 61 62 84 50 94 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 94 C38 84 7 61 4 43 C1 23 17 12 34 14 C43 15 48 22 50 31 C52 22 57 15 66 14 C83 12 99 23 96 43 C93 61 62 84 50 94 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.profile-portrait .profile-face{inset:20%;width:60%;height:60%;object-fit:cover;object-position:center 53%;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 94 C38 84 7 61 4 43 C1 23 17 12 34 14 C43 15 48 22 50 31 C52 22 57 15 66 14 C83 12 99 23 96 43 C93 61 62 84 50 94 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 94 C38 84 7 61 4 43 C1 23 17 12 34 14 C43 15 48 22 50 31 C52 22 57 15 66 14 C83 12 99 23 96 43 C93 61 62 84 50 94 Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 .profile-portrait .heart-frame{object-fit:contain}
 .shop-window-display{min-height:360px}
 .shop-placeholder{height:315px}
@@ -104,6 +105,16 @@
 @media(max-width:390px){.shop-art-character{height:190px}}
 .profile-window{position:absolute;inset:0;z-index:1;overflow:hidden;-webkit-mask-image:url("../assets/images/decoration/pawio-heart-opening.svg");-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-image:url("../assets/images/decoration/pawio-heart-opening.svg");mask-size:100% 100%;mask-repeat:no-repeat}
 .profile-portrait .profile-face{inset:15%;width:70%;height:70%;object-position:center 50%;-webkit-mask:none;mask:none}
+.profile-portrait .profile-face{top:7%;left:7%;right:auto;bottom:auto;width:86%;height:86%;object-position:center 50%}
+.section-head h1{font-family:'Mochiy Pop One',sans-serif;font-weight:400;letter-spacing:-.025em}
+.shop-copy h2,.info-window h2,.tos-rule h2{font-family:'Cherry Bomb One',sans-serif;font-weight:400}
+.dialogue-card p{font-family:'Yusei Magic',sans-serif;font-size:15px;line-height:1.65}
+.shop-copy p,.profile-facts dd,.plain-list,.order-notes p,.tos-rule ul,.commission-intro p{font-family:'M PLUS Rounded 1c',sans-serif;font-weight:500}
+.shop-awning{font-family:'Mochiy Pop One',sans-serif;font-size:13px}
+.window-bar{font-family:'Jua',sans-serif;font-size:13px;letter-spacing:.02em}
+.name-plate{font-family:'Dancing Script',cursive;font-size:16px;letter-spacing:.04em}
+.shop-speech{position:absolute;z-index:4;top:13%;right:21%;max-width:55%;width:max-content;padding:8px 12px;border:2px solid #dd91b2;border-radius:19px 19px 19px 8px;background:#fffafe;color:#76536f;box-shadow:0 3px 0 #f2dce7,0 4px 9px rgba(87,60,82,.12);font:13px/1.35 'Hachi Maru Pop',sans-serif;text-align:center;white-space:nowrap}
+.shop-speech:after{content:"";position:absolute;right:-7px;bottom:5px;width:12px;height:12px;border-right:2px solid #dd91b2;border-bottom:2px solid #dd91b2;border-radius:0 0 4px;background:#fffafe;transform:rotate(-25deg)}
 @media(max-width:680px){
  .profile-portrait{width:min(100%,290px);height:auto;aspect-ratio:1}
  .shop-awning{min-height:66px;justify-content:center;padding:8px 12px;font-size:14px;letter-spacing:0}

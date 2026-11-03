@@ -137,7 +137,7 @@
 
 /* Typography system: soft display headings, readable rounded copy, tiny pixel labels. */
 :root{--body:'M PLUS Rounded 1c',sans-serif;--display:'Hachi Maru Pop',sans-serif;--pixel:'DotGothic16',sans-serif;--script:'Dancing Script',cursive}
-.profile-portrait .profile-face{top:21%;left:30%;right:auto;bottom:auto;width:40%;height:55%;object-fit:fill;object-position:center 50%}
+.profile-portrait .profile-face{top:22%;left:17.5%;right:auto;bottom:auto;width:65%;height:46%;object-fit:fill;object-position:center 50%}
 body,button,input,select,textarea{font-family:var(--body)}
 .section-head h1,.shop-copy h2,.info-window h2,.tos-rule h2,.commission-intro h2{font-family:var(--display);font-weight:400;letter-spacing:.005em}
 .dialogue-card p,.profile-facts dd,.shop-copy p,.plain-list,.order-notes p,.tos-rule ul,.commission-intro p,.social-link small{font-family:var(--body);font-weight:400}

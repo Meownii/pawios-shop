@@ -161,3 +161,17 @@
   .shop-awning { padding-inline: 8px; font-size: 13px; }
   .shop-art-character { height: 116px; }
 }
+
+/* Mobile finish: keep the heart image readable and bring the shop character forward. */
+@media (max-width: 680px) {
+  .section-head h1, .shop-copy h2 { font-family: 'Cherry Bomb One', 'Jua', sans-serif; }
+  .dialogue-card p, .profile-facts dd, .shop-copy p { font-family: 'Zen Maru Gothic', sans-serif; }
+  .profile-portrait { width: min(100%, 320px); max-width: 320px; aspect-ratio: 1; }
+  .shop-awning { justify-content: center; text-align: center; font-family: 'Jua', sans-serif; }
+  .shop-window-display { min-height: 260px; }
+  .shop-placeholder { height: 215px; }
+  .shop-art-character { right: 7%; bottom: 29px; height: 205px; max-width: 58%; }
+}
+@media (max-width: 390px) {
+  .shop-art-character { height: 190px; }
+}

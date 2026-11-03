@@ -6,7 +6,7 @@ window.PAWIO_CONTENT = {
     "There's lots of cute stuff to explore here...",
     'Have fun, okay? ♡'
   ],
-  dialogueExpressions: ['open', 'closed', 'point', 'open'],
+  dialogueExpressions: ['surprised', 'smiling', 'winking', 'talking'],
   links: {
     discord: { label: 'Discord', url: 'https://discord.com/users/1195337052011630632', note: 'Custom inquiries / messages' },
     vgen: { label: 'VGen', url: 'https://vgen.co/Pawpawio', note: 'Commission options & requests' },

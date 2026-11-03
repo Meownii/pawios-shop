@@ -15,7 +15,7 @@
 .submit-status.is-error{color:#aa526f}
 .home-characters{min-height:360px;margin:0 auto;overflow:visible;transform:none;background:transparent;border:0;outline:0;box-shadow:none}
 .home-characters:before,.home-characters:after{display:none}
-.home-characters img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 6px 2px rgba(82,62,84,.12))}
+.home-characters img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 6px 2px rgba(82,62,84,.12))}.profile-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 42%}
 .logo-reservation{min-height:0;width:min(100%,390px);padding:6px 10px;border:0;background:none;box-shadow:none}
 .logo-reservation:before,.logo-reservation:after{display:none}
 .home-logo{display:block;width:100%;height:auto;max-height:145px;object-fit:contain}

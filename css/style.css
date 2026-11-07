@@ -146,3 +146,7 @@ body,button,input,select,textarea{font-family:var(--body)}
 .name-plate{font-family:var(--script);font-weight:500;letter-spacing:.035em}
 .shop-speech{font-family:var(--body);font-weight:400;letter-spacing:0}
 strong,.key-point{font-weight:500}
+
+
+/* Give the new stacked shop mark enough room on the home screen. */
+.home-logo{max-height:180px}

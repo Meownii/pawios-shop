@@ -560,3 +560,25 @@ body{background:#fffaf7!important;background-image:none!important}
   height: 46% !important;
   object-fit: fill !important;
 }
+
+
+/* Final alignment: enlarge the full face and scale the heart trim to it. */
+.profile-portrait .profile-face {
+  top: 23% !important;
+  left: 18.5% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 63% !important;
+  height: 54% !important;
+  transform: none !important;
+  object-fit: fill !important;
+  object-position: center !important;
+}
+.profile-portrait .heart-frame {
+  inset: auto !important;
+  top: 29% !important;
+  left: 25% !important;
+  width: 50% !important;
+  height: 42% !important;
+  object-fit: fill !important;
+}

@@ -375,3 +375,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline-color:#5f9092}
 /* Use the same warm, solid canvas on phones; keep the profile plaque bubbly. */
 body{background:#fffaf7!important;background-image:none!important}
 .name-plate{font-family:'Cherry Bomb One',sans-serif!important;font-size:15px;font-weight:400!important;letter-spacing:.015em}
+
+
+/* The face now fills the heart opening at every viewport size. */
+.profile-portrait.art-placeholder{background:transparent!important;background-image:none!important}
+.profile-portrait .profile-window{inset:8% 8% 8%!important}
+.profile-portrait .profile-face{inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important}

@@ -644,7 +644,7 @@ body{background:#fffaf7!important;background-image:none!important}
 }
 
 
-/* Final avatar fit: match the heart opening to the full animated face. */
+/* Tight full-face fit inside the heart-shaped portrait frame. */
 .profile-portrait {
   position: relative !important;
   width: min(100%, 380px) !important;
@@ -660,8 +660,8 @@ body{background:#fffaf7!important;background-image:none!important}
   height: 100% !important;
   overflow: hidden !important;
   background: transparent !important;
-  -webkit-mask-image: url("../assets/images/decoration/pawio-heart-opening.svg?v=heart-avatar-fit-20261108a") !important;
-  mask-image: url("../assets/images/decoration/pawio-heart-opening.svg?v=heart-avatar-fit-20261108a") !important;
+  -webkit-mask-image: url("../assets/images/decoration/pawio-heart-opening.svg?v=heart-only-avatar-20261108b") !important;
+  mask-image: url("../assets/images/decoration/pawio-heart-opening.svg?v=heart-only-avatar-20261108b") !important;
   -webkit-mask-size: 100% 100% !important;
   mask-size: 100% 100% !important;
   -webkit-mask-repeat: no-repeat !important;
@@ -669,13 +669,13 @@ body{background:#fffaf7!important;background-image:none!important}
 }
 .profile-portrait .profile-face {
   position: absolute !important;
-  top: -2% !important;
-  left: 15% !important;
+  top: -15% !important;
+  left: 0 !important;
   right: auto !important;
   bottom: auto !important;
-  width: 70% !important;
-  height: 70% !important;
-  object-fit: fill !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
   object-position: center !important;
   transform: none !important;
   -webkit-mask: none !important;
@@ -684,12 +684,15 @@ body{background:#fffaf7!important;background-image:none!important}
 .profile-portrait .heart-frame {
   position: absolute !important;
   inset: auto !important;
-  top: -5% !important;
-  left: -5% !important;
-  width: 110% !important;
-  height: 110% !important;
+  top: -35% !important;
+  left: -30% !important;
+  width: 160% !important;
+  height: 170% !important;
   object-fit: fill !important;
+  object-position: center !important;
   z-index: 2 !important;
+  -webkit-clip-path: url("../assets/images/decoration/pawio-heart-opening.svg?v=heart-only-avatar-20261108b#heart-outline") !important;
+  clip-path: url("../assets/images/decoration/pawio-heart-opening.svg?v=heart-only-avatar-20261108b#heart-outline") !important;
 }
 @media (max-width: 680px) {
   .profile-portrait {

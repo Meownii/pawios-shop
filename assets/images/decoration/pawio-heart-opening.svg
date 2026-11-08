@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 736 736"><path fill="white" d="M368 247 C335 211 270 194 224 220 C174 246 176 300 201 345 C232 400 320 469 368 505 C416 469 504 400 535 345 C560 300 562 246 512 220 C466 194 401 211 368 247 Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="heart-outline" clipPathUnits="objectBoundingBox">
+      <path d="M.50 .20 C.40 .07 .29 .04 .22 .06 C.09 .10 .02 .22 .03 .36 C.04 .56 .27 .79 .50 .91 C.73 .79 .96 .56 .97 .36 C.98 .22 .91 .10 .78 .06 C.71 .04 .60 .07 .50 .20 Z"/>
+    </clipPath>
+  </defs>
+  <path fill="white" d="M50 22 C42 14 29 10 22 14 C10 20 8 32 15 44 C23 59 39 75 50 84 C61 75 77 59 85 44 C92 32 90 20 78 14 C71 10 58 14 50 22 Z"/>
+</svg>

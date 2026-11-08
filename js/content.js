@@ -13,6 +13,6 @@ window.PAWIO_CONTENT = {
     toyhouse: { label: 'Toyhouse', url: 'https://toyhou.se/pawpawio_/characters', note: 'Commission options & characters' },
     instagram: { label: 'Instagram', url: 'https://www.instagram.com/pawpawio_/', note: '@pawpawio_' }
   },
-  music: { src: 'assets/audio/glow.mp3' },
+  music: { src: 'assets/audio/hitorigotsu-band-version.mp3' },
   doodle: { maxNameLength: 24, exportPrefix: 'pawio-doodle' }
 };

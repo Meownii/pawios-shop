@@ -894,3 +894,20 @@ body{background:#fffaf7!important;background-image:none!important}
     margin-inline: auto !important;
   }
 }
+
+
+/* Fit the complete portrait inside the heart while keeping the frame unobstructed. */
+.profile-portrait .profile-window {
+  overflow: hidden !important;
+}
+.profile-portrait .profile-face {
+  top: 13% !important;
+  left: 13% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 74% !important;
+  height: 74% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}

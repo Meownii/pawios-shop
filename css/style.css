@@ -173,3 +173,7 @@ body{background:#fffaf7!important;background-image:none!important}
 /* Scale the animated artwork inside the heart so the full face reads clearly. */
 .profile-portrait .profile-window{background:#ffda96!important}
 .profile-portrait .profile-face{inset:auto!important;top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;width:84%!important;height:84%!important;transform:translate(-50%,-50%)!important;object-fit:contain!important;object-position:center!important}
+
+
+/* Reduce the full animated GIF within the heart opening to frame the whole face. */
+.profile-portrait .profile-face{width:74%!important;height:74%!important}

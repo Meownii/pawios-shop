@@ -386,3 +386,7 @@ body{background:#fffaf7!important;background-image:none!important}
 /* Keep the portrait scale consistent on narrow screens. */
 .profile-portrait .profile-window{background:#ffda96!important}
 .profile-portrait .profile-face{inset:auto!important;top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;width:84%!important;height:84%!important;transform:translate(-50%,-50%)!important;object-fit:contain!important;object-position:center!important}
+
+
+/* Keep the smaller face framing on mobile too. */
+.profile-portrait .profile-face{width:74%!important;height:74%!important}

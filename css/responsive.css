@@ -621,3 +621,17 @@ body{background:#fffaf7!important;background-image:none!important}
   height: 100% !important;
   object-fit: contain !important;
 }
+
+
+/* Fill the enlarged opening while preserving the GIF's square proportions. */
+.profile-portrait .profile-face {
+  top: 8% !important;
+  left: 8% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 84% !important;
+  height: 84% !important;
+  transform: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}

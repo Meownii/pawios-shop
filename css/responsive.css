@@ -455,3 +455,17 @@ body{background:#fffaf7!important;background-image:none!important}
   height:100%!important;
   object-fit:fill!important;
 }
+
+
+/* Let the artwork fill the heart opening, so no square GIF edges show. */
+.profile-portrait .profile-face{
+  top:18%!important;
+  left:21%!important;
+  width:58%!important;
+  height:58%!important;
+  right:auto!important;
+  bottom:auto!important;
+  transform:none!important;
+  object-fit:fill!important;
+  object-position:center!important;
+}

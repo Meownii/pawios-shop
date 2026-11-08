@@ -394,3 +394,7 @@ body{background:#fffaf7!important;background-image:none!important}
 
 /* Keep the closer heart frame centered on mobile. */
 .profile-portrait .heart-frame{inset:4%!important;width:92%!important;height:92%!important}
+
+
+/* Bring the About heart closer to its heading on phones. */
+@media(max-width:680px){.profile-layout{margin-top:-20px}}

@@ -181,3 +181,7 @@ body{background:#fffaf7!important;background-image:none!important}
 
 /* Bring the scalloped heart frame closer to Pawio's face. */
 .profile-portrait .heart-frame{inset:4%!important;width:92%!important;height:92%!important}
+
+
+/* Tighten the vertical space between each section heading and its artwork. */
+.profile-layout{margin-top:-8px}

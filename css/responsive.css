@@ -635,3 +635,10 @@ body{background:#fffaf7!important;background-image:none!important}
   object-fit: contain !important;
   object-position: center !important;
 }
+
+
+/* Bust the cached small SVG mask so the full-face aperture is used. */
+.profile-portrait .profile-window {
+  -webkit-mask-image: url("../assets/images/decoration/pawio-heart-opening.svg?v=full-face-20261108") !important;
+  mask-image: url("../assets/images/decoration/pawio-heart-opening.svg?v=full-face-20261108") !important;
+}

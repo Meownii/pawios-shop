@@ -538,3 +538,14 @@ body{background:#fffaf7!important;background-image:none!important}
   height: 76% !important;
   object-fit: fill !important;
 }
+
+
+/* Fit the decorative heart snugly around the already-visible portrait. */
+.profile-portrait .heart-frame {
+  inset: auto !important;
+  top: 20% !important;
+  left: 20% !important;
+  width: 60% !important;
+  height: 60% !important;
+  object-fit: fill !important;
+}

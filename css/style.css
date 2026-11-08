@@ -168,3 +168,8 @@ body{background:#fffaf7!important;background-image:none!important}
 .profile-portrait .profile-window{position:absolute;inset:8% 8% 8%;z-index:1;overflow:hidden;background:transparent!important;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 92 C42 85 7 61 5 40 C2 20 17 9 33 12 C42 14 48 20 50 27 C53 20 59 14 67 12 C83 9 98 20 95 40 C93 61 58 85 50 92Z'/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 92 C42 85 7 61 5 40 C2 20 17 9 33 12 C42 14 48 20 50 27 C53 20 59 14 67 12 C83 9 98 20 95 40 C93 61 58 85 50 92Z'/%3E%3C/svg%3E");mask-size:100% 100%;mask-repeat:no-repeat}
 .profile-portrait .profile-face{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;-webkit-mask:none!important;mask:none!important}
 .profile-portrait .heart-frame{position:absolute!important;inset:0!important;z-index:2!important;width:100%!important;height:100%!important;object-fit:contain!important;background:transparent!important}
+
+
+/* Scale the animated artwork inside the heart so the full face reads clearly. */
+.profile-portrait .profile-window{background:#ffda96!important}
+.profile-portrait .profile-face{inset:auto!important;top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;width:84%!important;height:84%!important;transform:translate(-50%,-50%)!important;object-fit:contain!important;object-position:center!important}

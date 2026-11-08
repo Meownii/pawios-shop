@@ -642,3 +642,58 @@ body{background:#fffaf7!important;background-image:none!important}
   -webkit-mask-image: url("../assets/images/decoration/pawio-heart-opening.svg?v=full-face-20261108") !important;
   mask-image: url("../assets/images/decoration/pawio-heart-opening.svg?v=full-face-20261108") !important;
 }
+
+
+/* Final avatar fit: match the heart opening to the full animated face. */
+.profile-portrait {
+  position: relative !important;
+  width: min(100%, 380px) !important;
+  max-width: 380px !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1 !important;
+  overflow: visible !important;
+}
+.profile-portrait .profile-window {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  -webkit-mask-image: url("../assets/images/decoration/pawio-heart-opening.svg?v=heart-avatar-fit-20261108a") !important;
+  mask-image: url("../assets/images/decoration/pawio-heart-opening.svg?v=heart-avatar-fit-20261108a") !important;
+  -webkit-mask-size: 100% 100% !important;
+  mask-size: 100% 100% !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+}
+.profile-portrait .profile-face {
+  position: absolute !important;
+  top: -2% !important;
+  left: 15% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 70% !important;
+  height: 70% !important;
+  object-fit: fill !important;
+  object-position: center !important;
+  transform: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+.profile-portrait .heart-frame {
+  position: absolute !important;
+  inset: auto !important;
+  top: -5% !important;
+  left: -5% !important;
+  width: 110% !important;
+  height: 110% !important;
+  object-fit: fill !important;
+  z-index: 2 !important;
+}
+@media (max-width: 680px) {
+  .profile-portrait {
+    width: min(100%, 370px) !important;
+    max-width: 370px !important;
+  }
+}

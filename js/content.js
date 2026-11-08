@@ -1,10 +1,10 @@
 /* Edit site copy and outbound links here. Facts below were transcribed from Pawio's public Carrd. */
 window.PAWIO_CONTENT = {
   dialogue: [
-    "Hello, I'm Pawio! Nice to meet you!! Comms open~",
-    'I love Kagamine Rin and Usagi! 🩷',
-    'I love my friends and my pet! I have a pet leopard gecko named Churro~',
-    'Feel free to ask questions about comms and anything else on my socials (⁠｡⁠•̀⁠ω⁠-⁠)⁠✧'
+    'Eh?! A visitor?!',
+    "Welcome to my little corner of the internet!",
+    "There's lots of cute stuff to explore here...",
+    'Have fun, okay? ♡'
   ],
   dialogueExpressions: ['surprised', 'smiling', 'winking', 'talking'],
   links: {

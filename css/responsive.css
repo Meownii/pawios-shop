@@ -789,3 +789,8 @@ body{background:#fffaf7!important;background-image:none!important}
     width: min(360px, calc(100vw - 24px));
   }
 }
+
+
+/* Keep the on-site music player above the page frame. */
+.topbar { position: relative; z-index: 30; }
+.music-player-popover { z-index: 40; }

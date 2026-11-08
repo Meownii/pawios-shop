@@ -980,3 +980,17 @@ body{background:#fffaf7!important;background-image:none!important}
   object-position: center !important;
   transform: none !important;
 }
+
+
+/* Keep the entire face and side details clear of the heart cutout edges. */
+.profile-portrait .profile-face {
+  top: 17.5% !important;
+  left: 17.5% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 65% !important;
+  height: 65% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}

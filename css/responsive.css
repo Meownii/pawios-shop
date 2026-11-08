@@ -511,3 +511,17 @@ body{background:#fffaf7!important;background-image:none!important}
   object-fit: fill !important;
   object-position: center !important;
 }
+
+
+/* Center the complete animated face within the heart opening. */
+.profile-portrait .profile-face {
+  top: 19% !important;
+  left: 15% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 70% !important;
+  height: 60% !important;
+  transform: none !important;
+  object-fit: fill !important;
+  object-position: center !important;
+}

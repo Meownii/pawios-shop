@@ -407,3 +407,51 @@ body{background:#fffaf7!important;background-image:none!important}
 /* Fill the inner heart opening without changing its overall placement. */
 .profile-portrait .profile-face{width:86%!important;height:86%!important}
 @media(max-width:680px){#view-about .profile-layout{margin-top:-20px}}
+
+
+/* Align Pawio's animated portrait to the heart frame's actual inner opening. */
+.profile-portrait.art-placeholder{
+  position:relative!important;
+  overflow:visible!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.profile-portrait .profile-window{
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  overflow:hidden!important;
+  background:transparent!important;
+  -webkit-mask-image:url("../assets/images/decoration/pawio-heart-opening.svg")!important;
+  -webkit-mask-size:100% 100%!important;
+  -webkit-mask-position:center!important;
+  -webkit-mask-repeat:no-repeat!important;
+  mask-image:url("../assets/images/decoration/pawio-heart-opening.svg")!important;
+  mask-size:100% 100%!important;
+  mask-position:center!important;
+  mask-repeat:no-repeat!important;
+}
+.profile-portrait .profile-face{
+  position:absolute!important;
+  top:24%!important;
+  left:25%!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:50%!important;
+  height:50%!important;
+  transform:none!important;
+  object-fit:fill!important;
+  object-position:center!important;
+  -webkit-mask:none!important;
+  mask:none!important;
+}
+.profile-portrait .heart-frame{
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:fill!important;
+}

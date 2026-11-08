@@ -499,17 +499,15 @@ body{background:#fffaf7!important;background-image:none!important}
 }
 
 
-/* Match the larger centered portrait from the previous screenshot. */
-@media (max-width: 680px) {
-  .profile-portrait .profile-face {
-    top: 16% !important;
-    left: 16% !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: 68% !important;
-    height: 68% !important;
-    transform: none !important;
-    object-fit: fill !important;
-    object-position: center !important;
-  }
+/* Enlarge and center the animated face within the heart frame. */
+.profile-portrait .profile-face {
+  top: 16% !important;
+  left: 16% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 68% !important;
+  height: 68% !important;
+  transform: none !important;
+  object-fit: fill !important;
+  object-position: center !important;
 }

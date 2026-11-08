@@ -966,3 +966,17 @@ body{background:#fffaf7!important;background-image:none!important}
     max-width: 340px !important;
   }
 }
+
+
+/* Keep the complete face comfortably inside the heart opening. */
+.profile-portrait .profile-face {
+  top: 11% !important;
+  left: 11% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 78% !important;
+  height: 78% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}

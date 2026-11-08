@@ -844,3 +844,17 @@ body{background:#fffaf7!important;background-image:none!important}
   -webkit-mask: none !important;
   filter: none !important;
 }
+
+
+/* Scale Pawio's full square GIF into the heart opening, leaving the lace frame visible. */
+.profile-portrait .profile-face {
+  top: 7% !important;
+  left: 7% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 86% !important;
+  height: 86% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}

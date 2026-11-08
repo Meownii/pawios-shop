@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=DotGothic16&family=Fredoka:wght@400;500;600&family=Hachi+Maru+Pop&family=Jua&family=M+PLUS+Rounded+1c:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=heart-art-fit-20261108">
-  <link rel="stylesheet" href="css/responsive.css?v=about-audio-heart-fit-20261108b">
+  <link rel="stylesheet" href="css/responsive.css?v=about-audio-heart-fit-20261108c">
 </head>
 <body>
   <div class="desktop-shell">
@@ -22,7 +22,7 @@
           <button id="sfx-toggle" class="sfx-toggle" type="button" aria-label="Button sounds on" aria-pressed="true" title="Button sounds on">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9v6h4l5 4V5l-5 4z"/><path class="sound-wave" d="M15 9a4 4 0 0 1 0 6m2.5-8.5a7.5 7.5 0 0 1 0 11"/><path class="sound-mute" d="m15.5 9 5 6m0-6-5 6"/></svg>
           </button>
-          <button id="music-toggle" class="music-toggle" type="button" aria-label="Open music player" aria-expanded="false" title="Play music on this site"><span aria-hidden="true">♫</span></button><div id="music-player-popover" class="music-player-popover" hidden><iframe title="Hitorigotsu Band Version music player" src="https://embed.music.apple.com/us/song/1626771954?theme=light" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" loading="lazy"></iframe></div>
+          <button id="music-toggle" class="music-toggle" type="button" aria-label="Play background music" aria-pressed="false" title="Play background music"><span aria-hidden="true">♫</span></button><audio id="site-music" src="assets/audio/glow.mp3" preload="none" loop></audio>
         </div>
       </div>
     </header>
@@ -129,7 +129,7 @@
         </div>
       </section>
 
-      <footer class="screen-footer"><span class="footer-note">Pawio's World</span><span class="music-attribution">Hitorigotsu (Band Ver.) · play in the music player</span><a href="https://meownii0.neocities.org/" target="_blank" rel="noopener">Created by Meownii</a><a class="cursor-credit" href="https://www.rw-designer.com/cursor-set/rin-kagamine" target="_blank" rel="noopener noreferrer">Rin Kagamine cursor by ko · RW Designer</a></footer>
+      <footer class="screen-footer"><span class="footer-note">Pawio's World</span><span class="music-attribution"><a href="https://www.scottbuckley.com.au/library/glow/" target="_blank" rel="noopener">“Glow” by Scott Buckley · CC BY 4.0</a></span><a href="https://meownii0.neocities.org/" target="_blank" rel="noopener">Created by Meownii</a><a class="cursor-credit" href="https://www.rw-designer.com/cursor-set/rin-kagamine" target="_blank" rel="noopener noreferrer">Rin Kagamine cursor by ko · RW Designer</a></footer>
     </main>
   </div>
 
@@ -140,7 +140,7 @@
   <script src="js/content.js?v=pawio-art-20261103"></script>
   <script src="js/supabase-config.js?v=20261103-autopublish"></script>
   <script src="js/dialogue.js"></script>
-  <script src="js/music.js?v=apple-embed-20261108a"></script>
+  <script src="js/music.js?v=local-audio-20261108a"></script>
   <script src="js/button-sounds.js"></script>
   <script src="js/doodle.js?v=20261103-publish-confirm-3"></script>
   <script src="js/main.js"></script>

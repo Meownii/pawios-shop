@@ -858,3 +858,15 @@ body{background:#fffaf7!important;background-image:none!important}
   object-position: center !important;
   transform: none !important;
 }
+
+
+/* Match the reference image: use a compact heart badge on phone screens. */
+@media (max-width: 680px) {
+  .profile-portrait.art-placeholder {
+    width: min(100%, 240px) !important;
+    max-width: 240px !important;
+    height: auto !important;
+    aspect-ratio: 591 / 528 !important;
+    margin-inline: auto !important;
+  }
+}

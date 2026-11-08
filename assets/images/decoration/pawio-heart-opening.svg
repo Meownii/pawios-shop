@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
     <clipPath id="heart-outline" clipPathUnits="objectBoundingBox">
-      <path d="M.50 .20 C.41 .10 .25 .10 .16 .20 C.06 .31 .12 .57 .50 .91 C.88 .57 .94 .31 .84 .20 C.75 .10 .59 .10 .50 .20 Z"/>
+      <path d="M.50 .20 C.39 .09 .22 .09 .10 .20 C-.02 .32 .10 .59 .50 .92 C.90 .59 1.02 .32 .90 .20 C.78 .09 .61 .09 .50 .20 Z"/>
     </clipPath>
   </defs>
-  <path fill="white" d="M50 20 C41 10 25 10 16 20 C6 31 12 57 50 91 C88 57 94 31 84 20 C75 10 59 10 50 20 Z"/>
+  <path fill="white" d="M50 20 C39 9 22 9 10 20 C-2 32 10 59 50 92 C90 59 102 32 90 20 C78 9 61 9 50 20 Z"/>
 </svg>

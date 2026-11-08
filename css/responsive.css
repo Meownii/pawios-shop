@@ -994,3 +994,34 @@ body{background:#fffaf7!important;background-image:none!important}
   object-position: center !important;
   transform: none !important;
 }
+
+
+/* Use the alpha-cut portrait so the artwork follows the supplied heart aperture exactly. */
+.profile-portrait .profile-window {
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: visible !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+.profile-portrait .profile-face {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  object-position: center !important;
+  transform: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+.profile-portrait .heart-frame {
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  object-position: center !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}

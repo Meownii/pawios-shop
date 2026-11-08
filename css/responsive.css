@@ -549,3 +549,14 @@ body{background:#fffaf7!important;background-image:none!important}
   height: 60% !important;
   object-fit: fill !important;
 }
+
+
+/* Match the heart frame's proportions to the clipped portrait heart. */
+.profile-portrait .heart-frame {
+  inset: auto !important;
+  top: 27% !important;
+  left: 22.5% !important;
+  width: 55% !important;
+  height: 46% !important;
+  object-fit: fill !important;
+}

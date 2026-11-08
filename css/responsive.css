@@ -370,3 +370,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline-color:#5f9092}
 .swatch.is-selected{outline-color:#477a60}
 .submit-status.is-error{color:#a44670}
 .shop-speech{border-color:#d58bb9;color:#65485f;box-shadow:0 3px 0 #f2ddea,0 4px 9px rgba(87,60,82,.12)}
+
+
+/* Use the same warm, solid canvas on phones; keep the profile plaque bubbly. */
+body{background:#fffaf7!important;background-image:none!important}
+.name-plate{font-family:'Cherry Bomb One',sans-serif!important;font-size:15px;font-weight:400!important;letter-spacing:.015em}

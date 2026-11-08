@@ -8,9 +8,9 @@
   <title>Pawio's World</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=DotGothic16&family=Hachi+Maru+Pop&family=M+PLUS+Rounded+1c:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=pastel-palette-20261107">
-  <link rel="stylesheet" href="css/responsive.css?v=pastel-palette-20261107">
+  <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=DotGothic16&family=Fredoka:wght@400;500;600&family=Hachi+Maru+Pop&family=Jua&family=M+PLUS+Rounded+1c:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=about-refresh-20261108">
+  <link rel="stylesheet" href="css/responsive.css?v=about-refresh-20261108">
 </head>
 <body>
   <div class="desktop-shell">
@@ -22,9 +22,10 @@
           <button id="sfx-toggle" class="sfx-toggle" type="button" aria-label="Button sounds on" aria-pressed="true" title="Button sounds on">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9v6h4l5 4V5l-5 4z"/><path class="sound-wave" d="M15 9a4 4 0 0 1 0 6m2.5-8.5a7.5 7.5 0 0 1 0 11"/><path class="sound-mute" d="m15.5 9 5 6m0-6-5 6"/></svg>
           </button>
-          <label class="visually-hidden" for="music-volume">Music volume</label>
-          <input id="music-volume" class="music-volume" type="range" min="0" max="1" step="0.05" value="0.45" aria-label="Music volume">
-          <button id="music-toggle" class="music-toggle" type="button" aria-label="Turn music on" aria-pressed="false"><span aria-hidden="true">♪</span></button>
+          <button id="music-toggle" class="music-toggle" type="button" aria-label="Open Spotify player" aria-expanded="false" aria-controls="spotify-player-popover"><span aria-hidden="true">♪</span></button>
+          <div id="spotify-player-popover" class="spotify-popover" hidden>
+            <iframe id="spotify-player" title="Pawio’s Spotify song" src="https://open.spotify.com/embed/track/6CLv2AVvpRC6u84L6e79OS?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
         </div>
       </div>
     </header>
@@ -65,16 +66,10 @@
         <header class="section-head section-head--rose"><h1 id="about-title">About me</h1></header>
         <div class="profile-layout">
           <div class="profile-left">
-            <div class="art-placeholder profile-portrait"><div class="profile-window"><img class="profile-face" src="assets/images/characters/pawio/pawio-profile.gif?v=2" alt="Pawio’s bunny character smiling and blinking in an animated heart portrait" loading="eager"></div><img class="heart-frame" src="assets/images/decoration/pawio-heart-frame.png" alt="" aria-hidden="true" loading="eager"></div>
+            <div class="art-placeholder profile-portrait"><div class="profile-window"><img class="profile-face" src="assets/images/characters/pawio/pawio-profile.gif?v=2" alt="Pawio’s bunny character smiling and blinking in an animated heart portrait" loading="eager"></div><img class="heart-frame" src="assets/images/decoration/pawio-heart-frame.png?v=20261108" alt="" aria-hidden="true" loading="eager"></div>
           </div>
           <div class="profile-main">
-            <div class="dialogue-card profile-intro"><div class="name-plate">PAWIO</div><p>Hello! Iam pawio .any/they, comms open! rin oshikatsu!<br>Thank you for clicking this card,have a good day/night !!</p></div>
-            <dl class="profile-facts window-panel">
-              <div><dt>NAME</dt><dd>Pawio</dd></div>
-              <div><dt>PRONOUNS</dt><dd>Any / they</dd></div>
-              <div><dt>INTEREST</dt><dd>Rin oshikatsu</dd></div>
-              <div><dt>STATUS</dt><dd><span class="status-pill"><i></i> Commissions open</span></dd></div>
-            </dl>
+            <div class="dialogue-card profile-intro"><div class="name-plate">PAWIO</div><p>Hello, I’m Pawio! Nice to meet you!! Commissions open~<br>I love Kagamine Rin and Usagi! 🩷<br>I love my friends and my pet! I have a pet leopard gecko named Churro~<br>Feel free to ask about commissions and anything else on my socials (⁠｡⁠•̀⁠ω⁠-⁠)⁠✧</p></div>
             <div class="social-window"><h2 class="window-bar window-bar--lilac">Find Pawio</h2><div id="social-links" class="social-links"></div></div>
           </div>
         </div>
@@ -141,7 +136,6 @@
     </main>
   </div>
 
-  <audio id="bgm" preload="metadata" loop></audio>
   <div id="intro-overlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="Welcome introduction" hidden>
     <div class="intro-scene"><button id="skip-intro" class="skip-intro" type="button">SKIP ▶▶</button><div class="intro-art" aria-hidden="true"><img class="intro-sprite" data-expression="talking" src="assets/images/characters/pawio/sprites/sprite-talking.webp" alt=""><img class="intro-sprite" data-expression="calm" src="assets/images/characters/pawio/sprites/sprite-calm.webp" alt=""><img class="intro-sprite" data-expression="smiling" src="assets/images/characters/pawio/sprites/sprite-smiling.webp" alt=""><img class="intro-sprite" data-expression="nervous" src="assets/images/characters/pawio/sprites/sprite-nervous.webp" alt=""><img class="intro-sprite" data-expression="shy" src="assets/images/characters/pawio/sprites/sprite-shy.webp" alt=""><img class="intro-sprite" data-expression="laughing" src="assets/images/characters/pawio/sprites/sprite-laughing.webp" alt=""><img class="intro-sprite" data-expression="winking" src="assets/images/characters/pawio/sprites/sprite-winking.webp" alt=""><img class="intro-sprite" data-expression="crying" src="assets/images/characters/pawio/sprites/sprite-crying.webp" alt=""><img class="intro-sprite" data-expression="flustered" src="assets/images/characters/pawio/sprites/sprite-flustered.webp" alt=""><img class="intro-sprite" data-expression="surprised" src="assets/images/characters/pawio/sprites/sprite-surprised.webp" alt=""><img class="intro-sprite" data-expression="gentle-smile" src="assets/images/characters/pawio/sprites/sprite-gentle-smile.webp" alt=""><img class="intro-sprite" data-expression="happy-eyes-closed" src="assets/images/characters/pawio/sprites/sprite-happy-eyes-closed.webp" alt=""></div><div class="vn-dialogue" id="dialogue-box" role="button" tabindex="0" aria-label="Advance dialogue"><div class="dialogue-name">PAWIO</div><p id="dialogue-text" aria-live="polite"></p><span class="dialogue-next" id="dialogue-next" aria-hidden="true">▼</span></div></div>
   </div>

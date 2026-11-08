@@ -469,3 +469,17 @@ body{background:#fffaf7!important;background-image:none!important}
   object-fit:fill!important;
   object-position:center!important;
 }
+
+
+/* Enlarge and raise the portrait so the face fills the heart aperture. */
+.profile-portrait .profile-face{
+  top:0!important;
+  left:16%!important;
+  width:68%!important;
+  height:68%!important;
+  right:auto!important;
+  bottom:auto!important;
+  transform:none!important;
+  object-fit:fill!important;
+  object-position:center!important;
+}

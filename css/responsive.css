@@ -511,3 +511,30 @@ body{background:#fffaf7!important;background-image:none!important}
   object-fit: fill !important;
   object-position: center !important;
 }
+
+
+/* Scale the heart frame and portrait window together around the full face. */
+.profile-portrait .profile-window {
+  inset: 12% !important;
+  width: 76% !important;
+  height: 76% !important;
+}
+.profile-portrait .profile-face {
+  top: 24.5% !important;
+  left: 21.5% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 57% !important;
+  height: 49% !important;
+  transform: none !important;
+  object-fit: fill !important;
+  object-position: center !important;
+}
+.profile-portrait .heart-frame {
+  inset: auto !important;
+  top: 12% !important;
+  left: 12% !important;
+  width: 76% !important;
+  height: 76% !important;
+  object-fit: fill !important;
+}

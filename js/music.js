@@ -1,24 +1,32 @@
 (() => {
   const toggle = document.getElementById('music-toggle');
-  const popover = document.getElementById('music-player-popover');
-  if (!toggle || !popover) return;
+  const audio = document.getElementById('site-music');
+  if (!toggle || !audio) return;
 
-  function setOpen(open) {
-    popover.hidden = !open;
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Close music player' : 'Open music player');
-    toggle.title = open ? 'Close music player' : 'Play music on this site';
-    toggle.classList.toggle('is-on', open);
+  audio.volume = 0.28;
+
+  function updateButton(playing) {
+    toggle.setAttribute('aria-pressed', String(playing));
+    toggle.setAttribute('aria-label', playing ? 'Pause background music' : 'Play background music');
+    toggle.title = playing ? 'Pause background music' : 'Play background music';
+    toggle.classList.toggle('is-on', playing);
   }
 
-  toggle.addEventListener('click', () => setOpen(popover.hidden));
-  document.addEventListener('click', (event) => {
-    if (!popover.hidden && !popover.contains(event.target) && !toggle.contains(event.target)) setOpen(false);
-  });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !popover.hidden) {
-      setOpen(false);
-      toggle.focus();
+  toggle.addEventListener('click', async () => {
+    if (audio.paused) {
+      try {
+        await audio.play();
+        updateButton(true);
+      } catch {
+        updateButton(false);
+      }
+    } else {
+      audio.pause();
+      updateButton(false);
     }
   });
+
+  audio.addEventListener('play', () => updateButton(true));
+  audio.addEventListener('pause', () => updateButton(false));
+  audio.addEventListener('ended', () => updateButton(false));
 })();

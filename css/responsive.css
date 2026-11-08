@@ -402,3 +402,8 @@ body{background:#fffaf7!important;background-image:none!important}
 
 /* Remove the remaining oversized gap above the About portrait on mobile. */
 @media(max-width:680px){#view-about .profile-layout{margin-top:-38px}}
+
+
+/* Fill the inner heart opening without changing its overall placement. */
+.profile-portrait .profile-face{width:86%!important;height:86%!important}
+@media(max-width:680px){#view-about .profile-layout{margin-top:-20px}}

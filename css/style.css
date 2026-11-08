@@ -185,3 +185,7 @@ body{background:#fffaf7!important;background-image:none!important}
 
 /* Tighten the vertical space between each section heading and its artwork. */
 .profile-layout{margin-top:-8px}
+
+
+/* Fill the heart opening more closely with the animated portrait. */
+.profile-portrait .profile-face{width:86%!important;height:86%!important}

@@ -911,3 +911,58 @@ body{background:#fffaf7!important;background-image:none!important}
   object-position: center !important;
   transform: none !important;
 }
+
+
+/* Match the reference portrait: use the open-eyed art and fill the heart aperture. */
+.profile-portrait.art-placeholder {
+  width: min(100%, 250px) !important;
+  max-width: 250px !important;
+  aspect-ratio: 591 / 528 !important;
+  height: auto !important;
+  margin-inline: auto !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.profile-portrait .profile-window {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  -webkit-mask: url("../assets/images/decoration/pawio-heart-opening.svg?v=reference-fit-20261108") center / 100% 100% no-repeat !important;
+  mask: url("../assets/images/decoration/pawio-heart-opening.svg?v=reference-fit-20261108") center / 100% 100% no-repeat !important;
+}
+.profile-portrait .profile-face {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  transform: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+.profile-portrait .heart-frame {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  object-position: center !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
+  mask: none !important;
+  -webkit-mask: none !important;
+}
+@media (min-width: 681px) {
+  .profile-portrait.art-placeholder {
+    width: min(100%, 340px) !important;
+    max-width: 340px !important;
+  }
+}

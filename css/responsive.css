@@ -582,3 +582,33 @@ body{background:#fffaf7!important;background-image:none!important}
   height: 42% !important;
   object-fit: fill !important;
 }
+
+
+/* Show Pawio's complete animated face and scale the full heart badge together. */
+@media (max-width: 680px) {
+  .profile-portrait {
+    width: min(100%, 370px) !important;
+    max-width: 370px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+  }
+}
+.profile-portrait .profile-face {
+  top: 15% !important;
+  left: 15% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 70% !important;
+  height: 70% !important;
+  transform: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+.profile-portrait .heart-frame {
+  inset: auto !important;
+  top: 23% !important;
+  left: 19% !important;
+  width: 62% !important;
+  height: 62% !important;
+  object-fit: contain !important;
+}

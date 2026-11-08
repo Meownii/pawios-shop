@@ -177,3 +177,7 @@ body{background:#fffaf7!important;background-image:none!important}
 
 /* Reduce the full animated GIF within the heart opening to frame the whole face. */
 .profile-portrait .profile-face{width:74%!important;height:74%!important}
+
+
+/* Bring the scalloped heart frame closer to Pawio's face. */
+.profile-portrait .heart-frame{inset:4%!important;width:92%!important;height:92%!important}

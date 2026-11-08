@@ -390,3 +390,7 @@ body{background:#fffaf7!important;background-image:none!important}
 
 /* Keep the smaller face framing on mobile too. */
 .profile-portrait .profile-face{width:74%!important;height:74%!important}
+
+
+/* Keep the closer heart frame centered on mobile. */
+.profile-portrait .heart-frame{inset:4%!important;width:92%!important;height:92%!important}

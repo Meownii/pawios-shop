@@ -398,3 +398,7 @@ body{background:#fffaf7!important;background-image:none!important}
 
 /* Bring the About heart closer to its heading on phones. */
 @media(max-width:680px){.profile-layout{margin-top:-20px}}
+
+
+/* Remove the remaining oversized gap above the About portrait on mobile. */
+@media(max-width:680px){#view-about .profile-layout{margin-top:-38px}}

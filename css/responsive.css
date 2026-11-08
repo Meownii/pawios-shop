@@ -612,3 +612,12 @@ body{background:#fffaf7!important;background-image:none!important}
   height: 62% !important;
   object-fit: contain !important;
 }
+
+
+/* Match the larger heart opening with the complete supplied frame artwork. */
+.profile-portrait .heart-frame {
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}

@@ -794,3 +794,7 @@ body{background:#fffaf7!important;background-image:none!important}
 /* Keep the on-site music player above the page frame. */
 .topbar { position: relative; z-index: 30; }
 .music-player-popover { z-index: 40; }
+
+
+/* The music button controls the local audio file; no provider popover is used. */
+.music-player-popover, .spotify-popover { display: none !important; }

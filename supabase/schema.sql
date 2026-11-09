@@ -40,7 +40,7 @@ revoke all on function public.is_doodle_admin() from public, anon;
 grant execute on function public.is_doodle_admin() to authenticated, service_role;
 
 -- Remove every previous table policy so an older public rule cannot survive.
-do $
+do $private$
 declare p record;
 begin
   for p in
@@ -50,7 +50,7 @@ begin
     execute format('drop policy %I on public.doodles', p.policyname);
   end loop;
 end
-$;
+$private$;
 create policy "private admin can view doodles" on public.doodles
   for select to authenticated
   using (public.is_doodle_admin());
@@ -62,7 +62,7 @@ on conflict (id) do update
 set public = false, file_size_limit = 524288, allowed_mime_types = array['image/png'];
 
 -- Remove any earlier Storage policy that mentions this bucket only.
-do $
+do $private$
 declare p record;
 begin
   for p in
@@ -77,7 +77,7 @@ begin
     execute format('drop policy %I on storage.objects', p.policyname);
   end loop;
 end
-$;
+$private$;
 create policy "doodle admins can read private images" on storage.objects
   for select to authenticated
   using (bucket_id = 'doodle-submissions' and public.is_doodle_admin());

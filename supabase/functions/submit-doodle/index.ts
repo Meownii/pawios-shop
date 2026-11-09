@@ -68,5 +68,5 @@ Deno.serve(async (request: Request) => {
     await supabase.storage.from('doodle-submissions').remove([imagePath]);
     return reply(503, { error: 'Drawing could not be saved' });
   }
-  return reply(201, { accepted: true, status: 'published' });
+  return reply(201, { accepted: true, status: 'pending' });
 });

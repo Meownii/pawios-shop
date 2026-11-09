@@ -1,4 +1,4 @@
 [functions.submit-doodle]
-# Anonymous submissions are accepted only through this function. It validates input,
-# applies a server-side rate limit, and publishes each accepted drawing immediately.
+# Anonymous visitor submissions are accepted only through this function. It validates input,
+# applies a server-side rate limit, and stores each drawing in the private owner inbox.
 verify_jwt = false

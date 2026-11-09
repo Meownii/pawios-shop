@@ -1,5 +1,6 @@
--- Run in the Supabase SQL Editor. This creates or upgrades the Doodle Room
--- to publish visitor drawings immediately, with no moderation queue or admin panel.
+-- Private Doodle Room inbox. Run this in the Supabase SQL Editor.
+-- After this finishes, only the allowlisted Pawio account can read submissions.
+
 create extension if not exists pgcrypto with schema extensions;
 
 create table if not exists public.doodles (
@@ -10,41 +11,60 @@ create table if not exists public.doodles (
 );
 
 alter table public.doodles enable row level security;
+revoke all on public.doodles from public;
+revoke all on public.doodles from anon, authenticated;
+grant select on public.doodles to authenticated;
+grant all on public.doodles to service_role;
 
--- Remove the previous approval workflow if the earlier schema was already installed.
+create table if not exists public.doodle_admin_emails (
+  email text primary key check (email = lower(btrim(email)))
+);
+alter table public.doodle_admin_emails enable row level security;
+revoke all on public.doodle_admin_emails from public, anon, authenticated;
+grant all on public.doodle_admin_emails to service_role;
+
+create or replace function public.is_doodle_admin()
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select exists (
+    select 1
+    from public.doodle_admin_emails
+    where email = lower(coalesce(auth.jwt() ->> 'email', ''))
+  );
+$$;
+revoke all on function public.is_doodle_admin() from public, anon;
+grant execute on function public.is_doodle_admin() to authenticated, service_role;
+
+-- Remove earlier public-gallery and legacy approval policies.
+drop policy if exists "public doodles are visible" on public.doodles;
 drop policy if exists "approved doodles are visible" on public.doodles;
 drop policy if exists "admins can read all doodles" on public.doodles;
 drop policy if exists "admins can update doodles" on public.doodles;
 drop policy if exists "admins can delete doodles" on public.doodles;
-drop policy if exists "public doodles are visible" on public.doodles;
+drop policy if exists "private admin can view doodles" on public.doodles;
+create policy "private admin can view doodles" on public.doodles
+  for select to authenticated
+  using (public.is_doodle_admin());
+
+-- The bucket must be private. Existing drawings will no longer have public URLs.
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('doodle-submissions', 'doodle-submissions', false, 524288, array['image/png'])
+on conflict (id) do update
+set public = false, file_size_limit = 524288, allowed_mime_types = array['image/png'];
+
+drop policy if exists "public doodle gallery images are visible" on storage.objects;
 drop policy if exists "approved doodle images are visible" on storage.objects;
 drop policy if exists "admins can delete doodle images" on storage.objects;
-drop policy if exists "public doodle gallery images are visible" on storage.objects;
-drop index if exists public.doodles_public_gallery_idx;
-drop index if exists public.doodles_moderation_idx;
-alter table public.doodles drop column if exists status;
-drop function if exists public.is_doodle_admin();
-drop table if exists public.doodle_admins;
+drop policy if exists "doodle admins can read private images" on storage.objects;
+create policy "doodle admins can read private images" on storage.objects
+  for select to authenticated
+  using (bucket_id = 'doodle-submissions' and public.is_doodle_admin());
 
-create index if not exists doodles_gallery_idx on public.doodles (created_at desc);
-create policy "public doodles are visible" on public.doodles
-  for select to anon, authenticated using (true);
-revoke all on public.doodles from public;
-revoke insert, update, delete on public.doodles from anon, authenticated;
-grant select on public.doodles to anon, authenticated;
-grant all on public.doodles to service_role;
-
--- Images are public because they are submitted specifically for the shared gallery.
--- Only the server-side Edge Function can upload; no public upload policy is created.
-insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('doodle-submissions', 'doodle-submissions', true, 524288, array['image/png'])
-on conflict (id) do update
-set public = true, file_size_limit = 524288, allowed_mime_types = array['image/png'];
-
-create policy "public doodle gallery images are visible" on storage.objects
-  for select to anon, authenticated using (bucket_id = 'doodle-submissions');
-
--- The Edge Function uses this table for a five-submission limit per IP per 15 minutes.
+-- The Edge Function applies a five-submission limit per IP per 15 minutes.
 create table if not exists public.doodle_submission_limits (
   window_key text primary key,
   submission_count integer not null,
@@ -56,7 +76,8 @@ grant all on public.doodle_submission_limits to service_role;
 
 create or replace function public.consume_doodle_submission(p_window_key text)
 returns boolean
-language plpgsql security definer
+language plpgsql
+security definer
 set search_path = ''
 as $$
 declare current_count integer;

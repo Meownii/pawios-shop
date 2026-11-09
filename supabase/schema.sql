@@ -39,13 +39,18 @@ $$;
 revoke all on function public.is_doodle_admin() from public, anon;
 grant execute on function public.is_doodle_admin() to authenticated, service_role;
 
--- Remove earlier public-gallery and legacy approval policies.
-drop policy if exists "public doodles are visible" on public.doodles;
-drop policy if exists "approved doodles are visible" on public.doodles;
-drop policy if exists "admins can read all doodles" on public.doodles;
-drop policy if exists "admins can update doodles" on public.doodles;
-drop policy if exists "admins can delete doodles" on public.doodles;
-drop policy if exists "private admin can view doodles" on public.doodles;
+-- Remove every previous table policy so an older public rule cannot survive.
+do $
+declare p record;
+begin
+  for p in
+    select policyname from pg_policies
+    where schemaname = 'public' and tablename = 'doodles'
+  loop
+    execute format('drop policy %I on public.doodles', p.policyname);
+  end loop;
+end
+$;
 create policy "private admin can view doodles" on public.doodles
   for select to authenticated
   using (public.is_doodle_admin());
@@ -56,10 +61,23 @@ values ('doodle-submissions', 'doodle-submissions', false, 524288, array['image/
 on conflict (id) do update
 set public = false, file_size_limit = 524288, allowed_mime_types = array['image/png'];
 
-drop policy if exists "public doodle gallery images are visible" on storage.objects;
-drop policy if exists "approved doodle images are visible" on storage.objects;
-drop policy if exists "admins can delete doodle images" on storage.objects;
-drop policy if exists "doodle admins can read private images" on storage.objects;
+-- Remove any earlier Storage policy that mentions this bucket only.
+do $
+declare p record;
+begin
+  for p in
+    select policyname from pg_policies
+    where schemaname = 'storage'
+      and tablename = 'objects'
+      and (
+        coalesce(qual, '') ilike '%doodle-submissions%'
+        or coalesce(with_check, '') ilike '%doodle-submissions%'
+      )
+  loop
+    execute format('drop policy %I on storage.objects', p.policyname);
+  end loop;
+end
+$;
 create policy "doodle admins can read private images" on storage.objects
   for select to authenticated
   using (bucket_id = 'doodle-submissions' and public.is_doodle_admin());

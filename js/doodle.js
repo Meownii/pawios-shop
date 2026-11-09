@@ -46,42 +46,20 @@
 
   const config = window.PAWIO_SUPABASE || {};
   const status = $('submit-status'), submit = $('submit-doodle');
-  let client = null;
-  const setStatus = (message, error = false) => { status.textContent = message; status.classList.toggle('is-error', error); };
   const ready = Boolean(config.url && config.anonKey && window.supabase?.createClient);
   const submissionsReady = ready && config.submissionsEnabled === true;
   if (!ready) {
-    setStatus('The shared gallery is not connected yet. You can still save your PNG.');
-    $('gallery-grid').innerHTML = '<p class="empty-gallery">The shared gallery will appear here after setup.</p>';
+    setStatus('The private doodle inbox is not connected yet. You can still save your PNG.');
   } else {
-    client = window.supabase.createClient(config.url, config.anonKey);
     submit.disabled = !submissionsReady;
-    setStatus(submissionsReady ? 'Drawings appear in the shared gallery as soon as they are sent.' : 'The gallery is connected, but drawing submissions are not enabled yet.');
+    setStatus(submissionsReady
+      ? 'Your doodle will be sent privately to Pawio. Your name is optional.'
+      : 'Doodle submissions are paused while Pawio’s private inbox is being configured.');
     if (submissionsReady) submit.addEventListener('click', submitDoodle);
-    loadGallery();
-    window.addEventListener('pawio:viewchange', event => { if (event.detail.view === 'doodle') loadGallery(); });
-    window.setInterval(loadGallery, 60_000);
-  }
-
-  async function loadGallery() {
-    const grid = $('gallery-grid');
-    try {
-      const { data, error } = await client.from('doodles').select('id, nickname, image_path, created_at').order('created_at', { ascending: false }).limit(48);
-      if (error) throw error;
-      grid.replaceChildren();
-      if (!data.length) { grid.innerHTML = '<p class="empty-gallery">No doodles in the gallery yet.</p>'; return; }
-      for (const doodle of data) {
-        const { data: image } = client.storage.from(config.bucket || 'doodle-submissions').getPublicUrl(doodle.image_path);
-        const card = document.createElement('figure'); card.className = 'gallery-card';
-        const img = document.createElement('img'); img.src = image.publicUrl; img.alt = doodle.nickname ? `Doodle by ${doodle.nickname}` : 'Visitor doodle'; img.loading = 'lazy';
-        const caption = document.createElement('figcaption'); caption.textContent = doodle.nickname || 'Anonymous'; card.append(img, caption); grid.append(card);
-      }
-      if (!grid.children.length) grid.innerHTML = '<p class="empty-gallery">Gallery images are temporarily unavailable.</p>';
-    } catch (_) { grid.innerHTML = '<p class="empty-gallery">The gallery could not be reached. Please try again later.</p>'; }
   }
 
   async function submitDoodle() {
-    if (!ready || submit.disabled) return;
+    if (!ready || !submissionsReady || submit.disabled) return;
     if (!hasDrawing) { setStatus('Draw something before submitting.'); return; }
     if ($('doodle-website').value) { setStatus('Submission could not be completed.', true); return; }
     submit.disabled = true; setStatus('Sending your doodle…');
@@ -97,10 +75,9 @@
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(response.status === 413 ? 'Drawing is too large. You can save the PNG instead.' : result.error || 'Submission failed');
-      if (result.status !== 'published') throw new Error('The server accepted the request but did not confirm publication. The site owner needs to redeploy the latest submit-doodle function and run the latest schema.sql.');
-      setStatus('Your doodle is on the wall! Thanks for sharing.');
+      if (result.status !== 'pending') throw new Error('The server did not confirm private delivery. The site owner needs to deploy the private inbox schema and submit-doodle function.');
+      setStatus('Your doodle was sent privately to Pawio. Thank you for sharing!');
       $('doodle-name').value = ''; $('doodle-website').value = '';
-      await loadGallery();
     } catch (error) {
       const message = error?.message || '';
       const visibleMessage = message === 'Failed to fetch'

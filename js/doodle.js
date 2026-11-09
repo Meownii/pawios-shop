@@ -46,6 +46,7 @@
 
   const config = window.PAWIO_SUPABASE || {};
   const status = $('submit-status'), submit = $('submit-doodle');
+  const setStatus = (message, error = false) => { status.textContent = message; status.classList.toggle('is-error', error); };
   const ready = Boolean(config.url && config.anonKey && window.supabase?.createClient);
   const submissionsReady = ready && config.submissionsEnabled === true;
   if (!ready) {

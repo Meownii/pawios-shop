@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#affffb">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Private Doodle Inbox · Pawio's World</title>
+  <link rel="stylesheet" href="css/style.css?v=private-inbox-20261109">
+  <link rel="stylesheet" href="css/doodle-admin.css?v=private-inbox-20261109">
+</head>
+<body>
+  <div class="desktop-shell">
+    <header class="topbar">
+      <a class="brand-chip" href="index.html">PAWIO'S WORLD</a>
+      <span class="inbox-top-label">PRIVATE DOODLE INBOX</span>
+    </header>
+    <main class="screen-frame inbox-frame">
+      <div class="inbox-heading">
+        <p class="inbox-kicker">OWNER ACCESS ONLY</p>
+        <h1>Private Doodle Inbox</h1>
+        <p>Drawings sent from the Doodle Room appear here for Pawio only.</p>
+      </div>
+
+      <section id="login-panel" class="inbox-panel" aria-labelledby="login-title">
+        <h2 id="login-title">Sign in to view submissions</h2>
+        <p>Use the email address Pawio registered for private inbox access. A secure sign-in link will be sent by email.</p>
+        <form id="inbox-login-form">
+          <label for="inbox-email">Email address</label>
+          <input id="inbox-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="pawio@example.com">
+          <button class="vn-button action-button action-button--rose" type="submit">SEND SIGN-IN LINK</button>
+        </form>
+        <p id="login-status" class="inbox-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="submissions-panel" class="inbox-panel" hidden aria-labelledby="submissions-title">
+        <div class="inbox-toolbar">
+          <div><h2 id="submissions-title">Submissions</h2><p id="account-label"></p></div>
+          <div class="inbox-actions">
+            <button id="refresh-inbox" class="vn-button action-button action-button--blue" type="button">REFRESH</button>
+            <button id="sign-out" class="vn-button action-button action-button--lilac" type="button">SIGN OUT</button>
+          </div>
+        </div>
+        <p id="inbox-status" class="inbox-status" role="status" aria-live="polite"></p>
+        <div id="private-submissions" class="private-submissions"></div>
+      </section>
+
+      <a class="inbox-home-link" href="index.html">← Return to Pawio's World</a>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js?v=private-inbox-20261109"></script>
+  <script src="js/doodle-admin.js?v=private-inbox-20261109"></script>
+</body>
+</html>

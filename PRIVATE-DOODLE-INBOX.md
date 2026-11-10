@@ -1,37 +1,31 @@
-# Private Doodle Room inbox setup
+# Pawio’s private Doodle Room email setup
 
-The Doodle Room now sends drawings to a private owner inbox. The public site must not expose the gallery or image URLs. Keep submissions disabled until the Supabase steps below are complete.
+Visitors can submit a drawing without creating an account or signing in. The site emails the PNG directly to Pawio and does not display a public gallery. Keep submissions disabled until email delivery is configured and tested.
 
-## 1. Secure the database and image bucket
+## 1. Keep Supabase storage private
 
-In the Pawio Supabase project, open **SQL Editor**, create a query, paste the full contents of `supabase/schema.sql`, and run it. This removes old public read policies and makes the `doodle-submissions` bucket private. Existing submissions will then be visible only to the allowlisted account.
+The current Supabase setup keeps the `doodle-submissions` bucket private and does not let visitors read submitted images. The email function stores each image privately, emails it as an attachment, and reports success only after the email provider accepts it.
 
-## 2. Add Pawio's account
+## 2. Set up the email sender
 
-In Supabase **Authentication → Users**, invite or create the email account Pawio will use for the inbox. Use the same address in the allowlist query below.
+Create an account with Resend, add a sending domain you control, and verify it using the DNS records Resend provides. A verified sender address is required for production sending. Then create an API key.
 
-Run this in **SQL Editor**, replacing the example text with Pawio's email:
+## 3. Add secrets to Supabase
 
-```sql
-insert into public.doodle_admin_emails (email)
-values (lower(btrim('PAWIO_EMAIL_HERE')))
-on conflict (email) do nothing;
-```
+In Supabase, open **Project Settings → Edge Functions → Secrets** (or the Edge Function secrets settings) and add these values:
 
-Only an authenticated session whose email matches this allowlist can read doodle records or create temporary signed image links. Visitors can submit without signing in.
+- `RESEND_API_KEY`: the Resend API key
+- `DOODLE_RECIPIENT_EMAIL`: Pawio’s inbox address
+- `DOODLE_FROM_EMAIL`: a sender address on the verified domain, for example `Pawio Doodles <doodles@your-verified-domain.com>`
 
-## 3. Deploy the private submit function
+Do not add these values to `js/supabase-config.js`, any other public website file, or a public GitHub commit. Keep the recipient value in Supabase secrets too.
 
-In **Edge Functions**, open `submit-doodle`, replace its source with `supabase/functions/submit-doodle/index.ts`, and deploy it. It must have the project-provided `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` secrets. Never put the service-role key in website files.
+## 4. Deploy the Edge Function
 
-## 4. Allow the inbox sign-in redirect
+In **Edge Functions → submit-doodle**, replace the function source with `supabase/functions/submit-doodle/index.ts` and deploy it. The built-in `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` secrets must remain available.
 
-In **Authentication → URL Configuration → Redirect URLs**, add:
+## 5. Enable submissions
 
-`https://meownii.github.io/pawios-shop/doodle-admin.html`
+After the sender and secrets are set and a test submission reaches Pawio’s inbox, change `submissionsEnabled: false` to `submissionsEnabled: true` in `js/supabase-config.js` and publish that file. Until then, visitors can still draw and save a PNG, but the submit button stays paused.
 
-Email sign-in links are sent only to existing Supabase Auth users. The inbox page asks for Pawio's email and shows drawings only after sign-in and allowlist verification.
-
-## 5. Enable submissions last
-
-After steps 1–4 are complete, change `submissionsEnabled: false` to `submissionsEnabled: true` in `js/supabase-config.js` and publish that file. The public Doodle Room deliberately has no gallery; it tells visitors drawings go privately to Pawio and that their name is optional.
+Pawio does not need to log in to receive drawings. The optional `doodle-admin.html` page is no longer linked from the public Doodle Room.

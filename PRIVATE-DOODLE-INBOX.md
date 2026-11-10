@@ -1,31 +1,35 @@
-# Pawio’s private Doodle Room email setup
+# Private Doodle Room email setup
 
-Visitors can submit a drawing without creating an account or signing in. The site emails the PNG directly to Pawio and does not display a public gallery. Keep submissions disabled until email delivery is configured and tested.
+Visitors can send a doodle without creating an account or logging in. The PNG is emailed directly to Pawio’s inbox and never appears in a public gallery.
 
-## 1. Keep Supabase storage private
+## 1. Create the Google mailer
 
-The current Supabase setup keeps the `doodle-submissions` bucket private and does not let visitors read submitted images. The email function stores each image privately, emails it as an attachment, and reports success only after the email provider accepts it.
+Sign in to Apps Script using `meowniie00@gmail.com` and create a project at [script.google.com](https://script.google.com). Replace the contents of `Code.gs` with `supabase/google-apps-script/Code.gs` from this repository.
 
-## 2. Set up the email sender
+Open **Project Settings → Script Properties** and add:
 
-Create an account with Resend, add a sending domain you control, and verify it using the DNS records Resend provides. A verified sender address is required for production sending. Then create an API key.
+- Property: `DOODLE_RECIPIENT_EMAIL`
+- Value: the recipient email provided for Pawio
 
-## 3. Add secrets to Supabase
+In the editor, choose `authorizeDoodleMailer` and click **Run**. Approve the Gmail send permission for this Google account. This sends no email; it only authorizes future doodle notifications.
 
-In Supabase, open **Project Settings → Edge Functions → Secrets** (or the Edge Function secrets settings) and add these values:
+## 2. Deploy the web app
 
-- `RESEND_API_KEY`: the Resend API key
-- `DOODLE_RECIPIENT_EMAIL`: Pawio’s inbox address
-- `DOODLE_FROM_EMAIL`: a sender address on the verified domain, for example `Pawio Doodles <doodles@your-verified-domain.com>`
+Choose **Deploy → New deployment → Web app**:
 
-Do not add these values to `js/supabase-config.js`, any other public website file, or a public GitHub commit. Keep the recipient value in Supabase secrets too.
+- **Execute as:** Me
+- **Who has access:** Anyone
 
-## 4. Deploy the Edge Function
+Deploy, then copy the Web app URL ending in `/exec`. Keep this URL private; it acts as the server-side key for the mailer. Never put it in website JavaScript or publish it.
 
-In **Edge Functions → submit-doodle**, replace the function source with `supabase/functions/submit-doodle/index.ts` and deploy it. The built-in `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` secrets must remain available.
+## 3. Connect Supabase
 
-## 5. Enable submissions
+In **Supabase → Edge Functions → Secrets**, add:
 
-After the sender and secrets are set and a test submission reaches Pawio’s inbox, change `submissionsEnabled: false` to `submissionsEnabled: true` in `js/supabase-config.js` and publish that file. Until then, visitors can still draw and save a PNG, but the submit button stays paused.
+- `DOODLE_GOOGLE_SCRIPT_URL`: the private Apps Script Web app URL
 
-Pawio does not need to log in to receive drawings. The optional `doodle-admin.html` page is no longer linked from the public Doodle Room.
+Keep the existing `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` secrets. Deploy the updated source from `supabase/functions/submit-doodle/index.ts` in the `submit-doodle` Edge Function.
+
+## 4. Enable submissions
+
+After setup, a test doodle can confirm delivery. Then change `submissionsEnabled: false` to `submissionsEnabled: true` in `js/supabase-config.js` and publish the site. The submitter's name is optional, and Pawio does not need to log in to receive doodles.

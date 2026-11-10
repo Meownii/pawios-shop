@@ -47,11 +47,9 @@ Deno.serve(async (request: Request) => {
 
   const projectUrl = Deno.env.get('SUPABASE_URL');
   const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-  const resendApiKey = Deno.env.get('RESEND_API_KEY');
-  const recipient = Deno.env.get('DOODLE_RECIPIENT_EMAIL');
-  const sender = Deno.env.get('DOODLE_FROM_EMAIL');
+  const googleScriptUrl = Deno.env.get('DOODLE_GOOGLE_SCRIPT_URL');
   if (!projectUrl || !serviceKey) return reply(503, { error: 'Submission service is not configured' });
-  if (!resendApiKey || !recipient || !sender) return reply(503, { error: 'Email delivery is not configured' });
+  if (!googleScriptUrl) return reply(503, { error: 'Email delivery is not configured' });
 
   const ip = request.headers.get('cf-connecting-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
   const hmacKey = await crypto.subtle.importKey('raw', encoder.encode(serviceKey), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
@@ -74,23 +72,20 @@ Deno.serve(async (request: Request) => {
   }
   let mailResponse: Response;
   try {
-    mailResponse = await fetch('https://api.resend.com/emails', {
+    mailResponse = await fetch(googleScriptUrl, {
       method: 'POST',
-      headers: { 'Authorization': `Bearer ${resendApiKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from: sender,
-        to: [recipient],
-        subject: 'A new doodle for Pawio',
-        text: `A new doodle was sent from Pawio’s Doodle Room.\nName: ${nickname || 'Anonymous'}\n\nThe PNG is attached.`,
-        attachments: [{ filename: `pawio-doodle-${id.slice(0, 8)}.png`, content: payload.image }]
-      })
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ nickname: nickname || 'Anonymous', image: payload.image, id: id.slice(0, 8) }),
+      redirect: 'follow'
     });
   } catch {
     await supabase.from('doodles').delete().eq('id', id);
     await supabase.storage.from('doodle-submissions').remove([imagePath]);
     return reply(503, { error: 'Email delivery failed' });
   }
-  if (!mailResponse.ok) {
+  let mailResult: { ok?: boolean } = {};
+  try { mailResult = await mailResponse.json(); } catch { mailResult = {}; }
+  if (!mailResponse.ok || mailResult.ok !== true) {
     await supabase.from('doodles').delete().eq('id', id);
     await supabase.storage.from('doodle-submissions').remove([imagePath]);
     return reply(503, { error: 'Email delivery failed' });

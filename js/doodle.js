@@ -54,7 +54,7 @@
   } else {
     submit.disabled = !submissionsReady;
     setStatus(submissionsReady
-      ? 'Your doodle will be sent privately to Pawio. Your name is optional.'
+      ? 'Your doodle will be emailed privately to Pawio. Your name is optional.'
       : 'Doodle submissions are paused while Pawio’s private inbox is being configured.');
     if (submissionsReady) submit.addEventListener('click', submitDoodle);
   }
@@ -76,15 +76,17 @@
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(response.status === 413 ? 'Drawing is too large. You can save the PNG instead.' : result.error || 'Submission failed');
-      if (result.status !== 'pending') throw new Error('The server did not confirm private delivery. The site owner needs to deploy the private inbox schema and submit-doodle function.');
-      setStatus('Your doodle was sent privately to Pawio. Thank you for sharing!');
+      if (result.status !== 'delivered') throw new Error('Email delivery was not confirmed.');
+      setStatus('Your doodle was emailed privately to Pawio. Thank you for sharing!');
       $('doodle-name').value = ''; $('doodle-website').value = '';
     } catch (error) {
       const message = error?.message || '';
       const visibleMessage = message === 'Failed to fetch'
         ? 'The doodle service could not be reached. Check that the Edge Function is deployed and its URL is correct.'
         : message === 'Submission service is not configured'
-          ? 'The database setup is incomplete. Run the latest supabase/schema.sql in Supabase SQL Editor.'
+          ? 'The doodle service is not fully configured yet. Please try again later.'
+          : message === 'Email delivery is not configured' || message === 'Email delivery failed'
+            ? 'The email could not be delivered. Please try again later.'
           : message === 'Drawing could not be saved'
             ? 'The server could not save this drawing. Check the Supabase storage bucket and database setup.'
             : message === 'Origin not allowed'

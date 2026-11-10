@@ -45,7 +45,7 @@
       <section id="view-home" class="view is-active" aria-labelledby="home-title">
         <h1 id="home-title" class="visually-hidden">Pawio's World</h1>
         <div class="home-layout">
-          <figure class="character-stage home-characters"><img src="assets/images/characters/pawio/pawio-home-art-20261109.png?v=home-art-20261109" alt="Pawio in a pink bunny outfit with a donut and strawberry" fetchpriority="high"></figure>
+          <figure class="character-stage home-characters"><img src="assets/images/characters/pawio/pawio-home-art-20261110.webp?v=home-art-20261110" alt="Pawio in a pink bunny outfit with a donut and strawberry" fetchpriority="high"></figure>
           <div class="home-menu-column">
             <div class="logo-reservation"><img class="home-logo" src="assets/images/logo/pawios-shop.png?v=logo-client-20261108" alt="Pawio's shop!"></div>
             <nav class="main-menu" aria-label="Main menu">
@@ -121,7 +121,7 @@
             </div>
             <div class="machine-bottom"><label for="doodle-name">NAME (OPTIONAL) <input id="doodle-name" type="text" maxlength="24" placeholder="optional nickname" autocomplete="off"></label><div class="doodle-actions"><button id="save-doodle" class="vn-button save-button" type="button">SAVE PNG <span aria-hidden="true">↓</span></button><button id="submit-doodle" class="vn-button submit-button" type="button" disabled>SUBMIT DOODLE</button></div></div>
             <label class="honeypot" aria-hidden="true">Website <input id="doodle-website" type="text" tabindex="-1" autocomplete="off"></label>
-            <p id="submit-status" class="submit-status" role="status">Email delivery is being configured. You can still save your PNG.</p>
+            <p id="submit-status" class="submit-status" role="status">Draw something before sending, or save it as a PNG.</p>
           </div>
         </div>
       </section>
@@ -133,13 +133,12 @@
   <div id="intro-overlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="Welcome introduction" hidden>
     <div class="intro-scene"><button id="skip-intro" class="skip-intro" type="button">SKIP ▶▶</button><div class="intro-art" aria-hidden="true"><img class="intro-sprite" data-expression="talking" src="assets/images/characters/pawio/sprites/sprite-talking.webp" alt=""><img class="intro-sprite" data-expression="calm" src="assets/images/characters/pawio/sprites/sprite-calm.webp" alt=""><img class="intro-sprite" data-expression="smiling" src="assets/images/characters/pawio/sprites/sprite-smiling.webp" alt=""><img class="intro-sprite" data-expression="nervous" src="assets/images/characters/pawio/sprites/sprite-nervous.webp" alt=""><img class="intro-sprite" data-expression="shy" src="assets/images/characters/pawio/sprites/sprite-shy.webp" alt=""><img class="intro-sprite" data-expression="laughing" src="assets/images/characters/pawio/sprites/sprite-laughing.webp" alt=""><img class="intro-sprite" data-expression="winking" src="assets/images/characters/pawio/sprites/sprite-winking.webp" alt=""><img class="intro-sprite" data-expression="crying" src="assets/images/characters/pawio/sprites/sprite-crying.webp" alt=""><img class="intro-sprite" data-expression="flustered" src="assets/images/characters/pawio/sprites/sprite-flustered.webp" alt=""><img class="intro-sprite" data-expression="surprised" src="assets/images/characters/pawio/sprites/sprite-surprised.webp" alt=""><img class="intro-sprite" data-expression="gentle-smile" src="assets/images/characters/pawio/sprites/sprite-gentle-smile.webp" alt=""><img class="intro-sprite" data-expression="happy-eyes-closed" src="assets/images/characters/pawio/sprites/sprite-happy-eyes-closed.webp" alt=""></div><div class="vn-dialogue" id="dialogue-box" role="button" tabindex="0" aria-label="Advance dialogue"><div class="dialogue-name">PAWIO</div><p id="dialogue-text" aria-live="polite"></p><span class="dialogue-next" id="dialogue-next" aria-hidden="true">▼</span></div></div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/content.js?v=pawio-art-20261103"></script>
-  <script src="js/supabase-config.js?v=email-doodles-20261110"></script>
+    <script src="js/content.js?v=pawio-art-20261103"></script>
+  <script src="js/supabase-config.js?v=apps-script-mailer-20261110"></script>
   <script src="js/dialogue.js"></script>
   <script src="js/music.js?v=local-audio-20261108a"></script>
   <script src="js/button-sounds.js"></script>
-  <script src="js/doodle.js?v=email-doodles-20261110"></script>
+  <script src="js/doodle.js?v=apps-script-mailer-20261110"></script>
   <script src="js/main.js"></script>
   <script src="js/cursor.js"></script>
 </body>

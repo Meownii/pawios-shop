@@ -47,7 +47,11 @@ Deno.serve(async (request: Request) => {
 
   const projectUrl = Deno.env.get('SUPABASE_URL');
   const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+  const resendApiKey = Deno.env.get('RESEND_API_KEY');
+  const recipient = Deno.env.get('DOODLE_RECIPIENT_EMAIL');
+  const sender = Deno.env.get('DOODLE_FROM_EMAIL');
   if (!projectUrl || !serviceKey) return reply(503, { error: 'Submission service is not configured' });
+  if (!resendApiKey || !recipient || !sender) return reply(503, { error: 'Email delivery is not configured' });
 
   const ip = request.headers.get('cf-connecting-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
   const hmacKey = await crypto.subtle.importKey('raw', encoder.encode(serviceKey), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
@@ -68,5 +72,28 @@ Deno.serve(async (request: Request) => {
     await supabase.storage.from('doodle-submissions').remove([imagePath]);
     return reply(503, { error: 'Drawing could not be saved' });
   }
-  return reply(201, { accepted: true, status: 'pending' });
+  let mailResponse: Response;
+  try {
+    mailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${resendApiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: sender,
+        to: [recipient],
+        subject: 'A new doodle for Pawio',
+        text: `A new doodle was sent from Pawio’s Doodle Room.\nName: ${nickname || 'Anonymous'}\n\nThe PNG is attached.`,
+        attachments: [{ filename: `pawio-doodle-${id.slice(0, 8)}.png`, content: payload.image }]
+      })
+    });
+  } catch {
+    await supabase.from('doodles').delete().eq('id', id);
+    await supabase.storage.from('doodle-submissions').remove([imagePath]);
+    return reply(503, { error: 'Email delivery failed' });
+  }
+  if (!mailResponse.ok) {
+    await supabase.from('doodles').delete().eq('id', id);
+    await supabase.storage.from('doodle-submissions').remove([imagePath]);
+    return reply(503, { error: 'Email delivery failed' });
+  }
+  return reply(201, { accepted: true, status: 'delivered' });
 });

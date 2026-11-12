@@ -1025,3 +1025,23 @@ body{background:#fffaf7!important;background-image:none!important}
   pointer-events: none !important;
   z-index: 2 !important;
 }
+
+/* Home screen and controls tuned for narrow touch screens. */
+@media(max-width:680px){
+  .home-layout{gap:9px;padding:2px 0 11px}
+  .character-stage.home-characters{height:clamp(285px,88vw,370px);min-height:0;max-width:100%;border-radius:18px}
+  .home-characters img{transform:translateY(16px) scale(1.08);object-position:center bottom}
+  .home-menu-column{gap:7px;padding:0 1px}
+  .logo-reservation{width:min(100%,310px)}
+  .home-logo{max-height:98px}
+  .main-menu{width:min(100%,440px)}
+  .section-toolbar{overflow-x:auto;scrollbar-width:thin}
+}
+@media(max-width:390px){
+  .desktop-shell{width:calc(100% - 12px)}
+  .screen-frame{padding-inline:7px}
+  .character-stage.home-characters{height:clamp(270px,86vw,330px)}
+  .home-characters img{transform:translateY(13px) scale(1.06)}
+  .home-logo{max-height:88px}
+  .screen-footer{margin-inline:-7px}
+}

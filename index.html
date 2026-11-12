@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#affffb">
+  <meta name="theme-color" content="#70c8d4">
   <meta name="description" content="Pawio's personal corner of the internet: commissions, art, and a tiny doodle room.">
   <title>Pawio's World</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=DotGothic16&family=Fredoka:wght@400;500;600&family=Hachi+Maru+Pop&family=Jua&family=M+PLUS+Rounded+1c:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=home-art-larger-lower-20261109">
-  <link rel="stylesheet" href="css/responsive.css?v=heart-face-fit-20261108j">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Cherry+Bomb+One&family=DotGothic16&family=Fredoka:wght@400;500;600&family=Hachi+Maru+Pop&family=Jua&family=M+PLUS+Rounded+1c:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=aero-home-20261112">
+  <link rel="stylesheet" href="css/responsive.css?v=aero-home-mobile-20261112">
 </head>
 <body>
   <div class="desktop-shell">
@@ -57,6 +57,32 @@
             </nav>
           </div>
         </div>
+        <section class="aero-homeboard" aria-label="Music player and shop status">
+          <div class="aero-player" id="aeroPlayer">
+            <div class="aero-player-title"><span><i aria-hidden="true">♫</i> WINDOWS MEDIA PLAYER</span><span class="aero-player-led" aria-label="Player ready"></span></div>
+            <div class="aero-player-body">
+              <div class="aero-disc" aria-hidden="true"><span></span></div>
+              <div class="aero-track-info">
+                <small>NOW PLAYING · PAWIO’S PLAYLIST</small>
+                <strong>ひとりごつ ～バンドVer.～</strong>
+                <span>HITORIGOTSU · BAND VERSION</span>
+                <input class="aero-seek" id="aeroSeek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Track position">
+                <div class="aero-time"><span id="aeroCurrentTime">00:00</span><span id="aeroDuration">--:--</span></div>
+              </div>
+              <div class="aero-controls">
+                <button class="aero-play" id="aeroPlay" type="button" aria-label="Play music" aria-pressed="false">▶</button>
+                <label class="aero-volume-label" for="aeroVolume">VOL</label>
+                <input id="aeroVolume" class="aero-volume" type="range" min="0" max="1" step="0.01" value="0.28" aria-label="Music volume">
+              </div>
+              <div class="aero-equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="aero-player-bottom"><span>♫ HITORIGOTSU · FULL TRACK</span><span>STEREO <b>●</b></span></div>
+          </div>
+          <div class="aero-status-widgets">
+            <article class="aero-info-widget aero-info-widget--shop"><div class="aero-widget-label"><span>SHOP STATUS</span><b>01</b></div><strong><i aria-hidden="true">✦</i> CATALOGUE IN PREPARATION</strong><p>New items and official purchase links will appear here when the shop opens.</p></article>
+            <article class="aero-info-widget aero-info-widget--welcome"><div class="aero-widget-label"><span>QUICK ACCESS</span><b>02</b></div><strong><i aria-hidden="true">⌕</i> YOUR LITTLE WEB CORNER</strong><p>Explore artwork, commissions, shop news, terms, and the doodle room.</p></article>
+          </div>
+        </section>
       </section>
 
       <section id="view-about" class="view" aria-labelledby="about-title" hidden>
@@ -137,6 +163,7 @@
   <script src="js/supabase-config.js?v=apps-script-mailer-20261110"></script>
   <script src="js/dialogue.js"></script>
   <script src="js/music.js?v=local-audio-20261108a"></script>
+  <script src="js/aero-player.js"></script>
   <script src="js/button-sounds.js"></script>
   <script src="js/doodle.js?v=apps-script-mailer-20261110"></script>
   <script src="js/main.js"></script>
